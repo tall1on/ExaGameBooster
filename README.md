@@ -36,6 +36,9 @@ CPUAffinityGameBooster is a closed-source process optimization service for games
 CPUAffinityGameBooster is supported by Windows 10 and 11. We currently do not plan to extend the supported operating systems.
 
 ### Supported Games
+
+> **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games, please create an issue on Github or send us an email at gamebooster@exatek.de.
+
 | Game                            | 1.0.0                   |
 | -------                         | :---------------------: |
 | Counter Strike Global Offensive | ❌ (awaiting approval) |
