@@ -30,12 +30,12 @@ This software is provided "as is" without warranty of any kind, either express o
 | 1.0.0   | ✅              | ❌           |
 
 #### Intel Raptor Lake (13th Gen)
-| Version | i9 13900  | i7 13700  | i7 13600 | i7 13500 | i7 13400 |
+| Version | i9 13900  | i7 13700  | i5 13600 | i5 13500 | i5 13400 |
 | ------- | :-------: | :-------: | :-------: | :-------: | :-------: | 
 | 1.0.0   | ✅        | ✅       | ✅       |  ✅       | ✅       | 
 
 #### Intel Alder Lake (12th Gen)
-| Version | i9 12900  | i7 12700  | i7 12600K |
+| Version | i9 12900  | i7 12700  | i5 12600K |
 | ------- | :-------: | :-------: | :-------: | 
 | 1.0.0   | ✅        | ✅       | ✅       |  
 
