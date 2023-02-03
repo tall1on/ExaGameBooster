@@ -4,7 +4,7 @@ CPUAffinityGameBooster is an closed source process optimization service for game
 
 ### Supported CPU's
 
-> **_NOTE:_**  If your CPU isn't listed you probably don't need this program. This program solves scheduler issues caused by multi-die CPU's.
+> **_NOTE:_**  If your CPU is not in the list, you probably do not need this program. This program solves scheduler problems caused by multi-die CPUs.
 
 #### AMD Ryzen Raphael (7000 Series)
 | Version | Ryzen 9 7950X3D | Ryzen 9 7900X3D | Ryzen 9 7950X | Ryzen 9 7900X |
@@ -31,6 +31,23 @@ CPUAffinityGameBooster is an closed source process optimization service for game
 | ------- | :-------: | :-------: | :-------: | 
 | 1.0.0   | ✅        | ✅       | ✅       |  
 
-### Supported OS
+### Supported Operating Systems
 
-CPUAffinityGameBooster is supported on Windows 10 & 11. We currently don't plan to expand the supported os's.
+CPUAffinityGameBooster is supported by Windows 10 and 11. We currently do not plan to extend the supported operating systems.
+
+### Supported Games
+| Game                            | 1.0.0     |
+| -------                         | :-------: |
+| Counter Strike Global Offensive | ❌ (awaiting approval) |
+| Cyberpunk 2077                  | ✅        |
+| Escape from Tarkov              | ❌ (awaiting approval)        |
+| Satisfactory                    | ✅        |
+| F1 Manager 2022                 | ✅        |
+| GTA V                           | ✅        |
+| Hitman 3                        | ✅        |
+| Lost Ark                        | ✅        |
+| Ready Or Not                    | ✅        |
+| Train Sim World 3               | ✅        |
+| Red Dead Redemption 2           | ✅        |
+| The Witcher 3                   | ✅        |
+| World of Warcraft               | ✅        |
