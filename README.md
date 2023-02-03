@@ -8,6 +8,8 @@
 
 CPUAffinityGameBooster™ is a closed-source process optimization service for games. This program optimizes core allocations for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel P+E cores.
 
+This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
+
 ### Supported CPU's
 
 > **_NOTE:_**  If your CPU is not in the list, you probably do not need this program. This program solves scheduler problems caused by multi-die CPUs.
