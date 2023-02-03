@@ -49,7 +49,7 @@ CPUAffinityGameBooster™ is supported by Windows 10 and 11. We currently do not
 
 | Game                            | 1.0.0                   | Comments |
 | -------                         | :---------------------: | -------- |
-| Counter Strike Global Offensive | ❌ (in testing)        | Valve is positive about the program, but cannot assure us of VAC compatibility. We are currently testing VAC compatibility and will add CS:GO support in a later update. |
+| Counter Strike Global Offensive | ⏳ (in testing)        | Valve is positive about the program, but cannot assure us of VAC compatibility. We are currently testing VAC compatibility and will add CS:GO support in a later update. |
 | Cyberpunk 2077                  | ✅                     |
 | Escape from Tarkov              | ❌ (awaiting approval) | We are still waiting for a response from Battleye. We will add support for Battleye games in a later update.
 | Satisfactory                    | ✅                     |
