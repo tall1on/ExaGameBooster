@@ -17,16 +17,19 @@ This software is provided "as is" without warranty of any kind, either express o
 #### AMD Ryzen Raphael (7000 Series)
 | Version | Ryzen 9 7950X3D | Ryzen 9 7900X3D | Ryzen 9 7950X | Ryzen 9 7900X |
 | ------- | :-------:       | :-------:       | :-------:     | :-------:     |
+| 1.1.0   | ✅              | ✅             | ✅            |  ✅          |
 | 1.0.0   | ✅              | ❌             | ✅            |  ❌          |
 
 #### AMD Ryzen Vermeer (5000 Series)
 | Version | Ryzen 9 5950X | Ryzen 9 5900X |
 | ------- | :-------:       | :-------:   |
+| 1.1.0   | ✅              | ✅         |
 | 1.0.0   | ✅              | ❌         |
 
 #### AMD Ryzen Matisse (3000 Series)
 | Version | Ryzen 9 3950X   | Ryzen 9 3900X |
 | ------- | :-------:       | :-------:     |
+| 1.1.0   | ✅              | ✅           |
 | 1.0.0   | ✅              | ❌           |
 
 #### Intel Raptor Lake (13th Gen)
@@ -47,18 +50,21 @@ CPUAffinityGameBooster™ is supported by Windows 10 and 11. We currently do not
 
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games, please create an issue on Github or send us an email at gamebooster@exatek.de.
 
-| Game                            | 1.0.0                   | Comments |
-| -------                         | :---------------------: | -------- |
-| Counter Strike Global Offensive | ⏳ (in testing)        | Valve is positive about the program, but cannot assure us of VAC compatibility. We are currently testing VAC compatibility and will add CS:GO support in a later update. |
-| Cyberpunk 2077                  | ✅                     |
-| Escape from Tarkov              | ❌ (awaiting approval) | We are still waiting for a response from Battleye. We will add support for Battleye games in a later update.
-| Satisfactory                    | ✅                     |
-| F1 Manager 2022                 | ✅                     |
-| GTA V                           | ✅                     |
-| Hitman 3                        | ✅                     |
-| Lost Ark                        | ✅                     |
-| Ready Or Not                    | ✅                     |
-| Train Sim World 3               | ✅                     |
-| Red Dead Redemption 2           | ✅                     |
-| The Witcher 3                   | ✅                     |
-| World of Warcraft               | ✅                     |
+| Game                            | 1.1.0                   | 1.0.0                 | Comments |
+| -------                         | :---------------------: | :-------------------: | -------- |
+| Call of Duty                    | ✅                     | ❌
+| Counter Strike Global Offensive | ⏳ (in testing)        | ❌                    | Valve is positive about the program, but cannot assure us of VAC compatibility. We are currently testing VAC compatibility and will add CS:GO support in a later update. |
+| Cyberpunk 2077                  | ✅                     | ✅
+| Escape from Tarkov              | ❌ (awaiting approval) | ❌ (awaiting approval | We are still waiting for a response from Battleye. We will add support for Battleye games in a later update.
+| F1 Manager 2022                 | ✅                     | ✅
+| GTA V                           | ✅                     | ✅
+| Hitman 3                        | ✅                     | ✅
+| League of Legends               | ✅                     | ❌
+| Lost Ark                        | ✅                     | ✅
+| Minecraft                       | ✅                     | ❌
+| Ready Or Not                    | ✅                     | ✅
+| Satisfactory                    | ✅                     | ✅
+| Train Sim World 3               | ✅                     | ✅
+| Red Dead Redemption 2           | ✅                     | ✅
+| The Witcher 3                   | ✅                     | ✅
+| World of Warcraft               | ✅                     | ✅
