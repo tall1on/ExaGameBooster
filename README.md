@@ -1,6 +1,6 @@
 # CPUAffinityGameBooster
 
-CPUAffinityGameBooster is an closed source process optimization service for games.
+CPUAffinityGameBooster is a closed-source process optimization service for games. This program optimizes core allocations for games to improve performance. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel P+E cores.
 
 ### Supported CPU's
 
@@ -36,18 +36,18 @@ CPUAffinityGameBooster is an closed source process optimization service for game
 CPUAffinityGameBooster is supported by Windows 10 and 11. We currently do not plan to extend the supported operating systems.
 
 ### Supported Games
-| Game                            | 1.0.0     |
-| -------                         | :-------: |
+| Game                            | 1.0.0                   |
+| -------                         | :---------------------: |
 | Counter Strike Global Offensive | ❌ (awaiting approval) |
-| Cyberpunk 2077                  | ✅        |
-| Escape from Tarkov              | ❌ (awaiting approval)        |
-| Satisfactory                    | ✅        |
-| F1 Manager 2022                 | ✅        |
-| GTA V                           | ✅        |
-| Hitman 3                        | ✅        |
-| Lost Ark                        | ✅        |
-| Ready Or Not                    | ✅        |
-| Train Sim World 3               | ✅        |
-| Red Dead Redemption 2           | ✅        |
-| The Witcher 3                   | ✅        |
-| World of Warcraft               | ✅        |
+| Cyberpunk 2077                  | ✅                     |
+| Escape from Tarkov              | ❌ (awaiting approval) |
+| Satisfactory                    | ✅                     |
+| F1 Manager 2022                 | ✅                     |
+| GTA V                           | ✅                     |
+| Hitman 3                        | ✅                     |
+| Lost Ark                        | ✅                     |
+| Ready Or Not                    | ✅                     |
+| Train Sim World 3               | ✅                     |
+| Red Dead Redemption 2           | ✅                     |
+| The Witcher 3                   | ✅                     |
+| World of Warcraft               | ✅                     |
