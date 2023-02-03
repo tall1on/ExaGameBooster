@@ -1,6 +1,6 @@
-# CPUAffinityGameBooster
+# CPUAffinityGameBooster™
 
-CPUAffinityGameBooster is a closed-source process optimization service for games. This program optimizes core allocations for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel P+E cores.
+CPUAffinityGameBooster™ is a closed-source process optimization service for games. This program optimizes core allocations for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel P+E cores.
 
 ### Supported CPU's
 
@@ -33,7 +33,7 @@ CPUAffinityGameBooster is a closed-source process optimization service for games
 
 ### Supported Operating Systems
 
-CPUAffinityGameBooster is supported by Windows 10 and 11. We currently do not plan to extend the supported operating systems.
+CPUAffinityGameBooster™ is supported by Windows 10 and 11. We currently do not plan to extend the supported operating systems.
 
 ### Supported Games
 
