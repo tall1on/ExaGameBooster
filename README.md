@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="#">
+    <img alt="Exatek" src="https://cdn.exatek.de/exatek/exa-partner.png" width="300" />
+  </a>
+</p>
 # CPUAffinityGameBooster™
 
 CPUAffinityGameBooster™ is a closed-source process optimization service for games. This program optimizes core allocations for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel P+E cores.
