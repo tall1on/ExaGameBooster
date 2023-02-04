@@ -15,22 +15,25 @@ This software is provided "as is" without warranty of any kind, either express o
 > **_NOTE:_**  If your CPU is not in the list, you probably do not need this program. This program solves scheduler problems caused by multi-die CPUs.
 
 #### AMD Ryzen Raphael (7000 Series)
-| Version | Ryzen 9 7950X3D | Ryzen 9 7900X3D | Ryzen 9 7950X | Ryzen 9 7900X |
-| ------- | :-------:       | :-------:       | :-------:     | :-------:     |
-| 1.1.0   | ✅              | ✅             | ✅            |  ✅          |
-| 1.0.0   | ✅              | ❌             | ✅            |  ❌          |
+| Version | Ryzen 9 7950X3D | Ryzen 9 7900X3D | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
+| ------- | :-------:       | :-------:       | :-------:     | :-------:     | :-------:    |
+| 2.0.0   | ✅              | ✅             | ✅            |  ✅          |  ✅         |
+| 1.1.0   | ✅              | ✅             | ✅            |  ✅          |  ❌         |
+| 1.0.0   | ✅              | ❌             | ✅            |  ❌          |  ❌         |
 
 #### AMD Ryzen Vermeer (5000 Series)
-| Version | Ryzen 9 5950X | Ryzen 9 5900X |
-| ------- | :-------:       | :-------:   |
-| 1.1.0   | ✅              | ✅         |
-| 1.0.0   | ✅              | ❌         |
+| Version | Ryzen 9 5950X | Ryzen 9 5900X | Ryzen 9 5900 |
+| ------- | :-------:       | :-------:   | :-------:    |
+| 2.0.0   | ✅              | ✅         | ✅          |
+| 1.1.0   | ✅              | ✅         | ❌          |
+| 1.0.0   | ✅              | ❌         | ❌          |
 
 #### AMD Ryzen Matisse (3000 Series)
-| Version | Ryzen 9 3950X   | Ryzen 9 3900X |
-| ------- | :-------:       | :-------:     |
-| 1.1.0   | ✅              | ✅           |
-| 1.0.0   | ✅              | ❌           |
+| Version | Ryzen 9 3950X   | Ryzen 9 3900X | Ryzen 9 3900 |
+| ------- | :-------:       | :-------:     | :-------:    |
+| 2.0.0   | ✅              | ✅           | ✅          |
+| 1.1.0   | ✅              | ✅           | ❌          |
+| 1.0.0   | ✅              | ❌           | ❌          |
 
 #### Intel Raptor Lake (13th Gen)
 | Version | i9 13900  | i7 13700  | i5 13600 | i5 13500 | i5 13400 |
