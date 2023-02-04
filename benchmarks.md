@@ -1,5 +1,5 @@
 # Benchmarks (WIP)
-## Cyberpunk 2077
+## Cyberpunk 2077 (v1.1.0)
 | Version | Native    | CPUAffinityGameBooster | Improvement |
 | ------- | :-------  | :--------------------- | :---------- |
 | 720p    | 113,3 FPS | 118,1 FPS              | +4,2%       |
