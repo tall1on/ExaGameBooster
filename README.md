@@ -10,6 +10,8 @@ CPUAffinityGameBooster™ is a closed-source process optimization service for ga
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
+Current Version: v2.0.1 ([download](https://github.com/Exatek-Germany/CPUAffinityGameBooster/releases/download/v2.0.1/CpuAffinityGameBooster_x64.zip) via GitHub)
+
 ### Supported CPU's
 
 > **_NOTE:_**  If your CPU is not in the list, you probably do not need this program. This program solves scheduler problems caused by multi-die CPUs.
