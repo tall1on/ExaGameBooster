@@ -1,10 +1,23 @@
-# Benchmarks (WIP)
-## Cyberpunk 2077 (v1.1.0)
-| Version | Native    | CPUAffinityGameBooster | Improvement |
-| ------- | :-------  | :--------------------- | :---------- |
-| 720p    | 113,3 FPS | 118,1 FPS              | +4,2%       |
-| 1080p   | 99,4 FPS  | 99,8 FPS               | +0,4%       |
-| 1440p   | 88,7 FPS  | 89,8 FPS               | +1,2%       |
+# Benchmarks v2.0.1 (WIP)
+## Cyberpunk 2077
+### 1280x720
+|             | Native     | CPUAffinityGameBooster | Improvement |
+| ----------- | :-------   | :--------------------- | :---------- |
+| Average     | 162,96 FPS | 176,97 FPS             | +8,5%       |
+| Minimum FPS | 87,26 FPS  | 98,22 FPS              | +12,5%      |
+| Maximum FPS | 221,48 FPS | 241,25 FPS             | +8,9%       |
+### 1920x1080
+|             | Native     | CPUAffinityGameBooster | Improvement |
+| ----------- | :-------   | :--------------------- | :---------- |
+| Average     | 163,14 FPS | 178,95 FPS             | +9,6%       |
+| Minimum FPS | 81,14 FPS  | 84,96 FPS              | +4,7%       |
+| Maximum FPS | 220,16 FPS | 244,89 FPS             | +11,2%       |
+### 2560x1440
+|             | Native     | CPUAffinityGameBooster | Improvement |
+| ----------- | :-------   | :--------------------- | :---------- |
+| Average     | 164,28 FPS | 174,38 FPS             | +6,1%       |
+| Minimum FPS | 64,49 FPS  | 77,20 FPS              | +19,7%      |
+| Maximum FPS | 223,59 FPS | 236,63 FPS             | +5,8%       |
 
 # System
 - Windows 11 Pro 64-bit (6.2, Build 9200)
