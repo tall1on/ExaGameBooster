@@ -13,9 +13,9 @@ This software is provided "as is" without warranty of any kind, either express o
 Current Version: v2.0.1 ([download](https://github.com/Exatek-Germany/CPUAffinityGameBooster/releases/download/v2.0.1/CpuAffinityGameBooster_x64.zip) via GitHub)
 
 ### Roadmap (as of 2023-02-23)
-- v2.1: Support for Intel 12th/13th Gen Mobile Processors + Support for more Games
-- v2.2: Launch Improvments for R9 7900X3D/7950X3D + Support for more Games
-- v3.0: Improved Installer, New Uninstaller and Updater + Support for more Games
+- v2.1.0: Support for Intel 12th/13th Gen Mobile Processors + Support for more Games
+- v2.2.0: Launch Improvments for R9 7900X3D/7950X3D + Support for more Games
+- v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games
 
 ### Supported CPU's
 
