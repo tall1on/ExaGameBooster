@@ -13,12 +13,11 @@ P+E cores.
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
 Current Version:
-v2.0.1 ([download](https://github.com/Exatek-Germany/ExaGameBooster/releases/download/v2.0.1/CpuAffinityGameBooster_x64.zip)
+v2.1.0 ([download](https://github.com/Exatek-Germany/ExaGameBooster/releases/download/v2.1.0/ExaGameBooster_x64.zip)
 via GitHub)
 
-### Roadmap (as of 2023-02-23)
+### Roadmap (as of 2023-02-26)
 
-- v2.1.0: Support for Intel 12th/13th Gen Mobile Processors + Support for more Games
 - v2.2.0: Launch Improvements for R9 7900X3D/7950X3D + Support for more Games
 - v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games
 
@@ -94,7 +93,6 @@ systems.
 | Hitman 3                                                 |           ✅           |   ✅   |   ✅   |   ✅   |                                                                                                                                                                          |
 | Hired Ops                                                |           ✅           |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
 | League of Legends                                        |           ✅           |   ✅   |   ✅   |   ❌   |                                                                                                                                                                          |
-| Lost Ark                                                 |           ✅           |   ✅   |   ✅   |   ✅   |                                                                                                                                                                          |
 | Middle-earth: Shadow of War                              |           ✅           |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
 | Minecraft                                                |           ✅           |   ✅   |   ✅   |   ❌   |                                                                                                                                                                          |
 | Monster Hunter: World                                    |           ✅           |   ✅   |   ❌   |   ❌   |                                                                                                                                                                          |
