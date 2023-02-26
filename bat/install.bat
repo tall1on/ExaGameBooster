@@ -35,6 +35,6 @@ rmdir "C:\Program Files\Exatek\ExaGameBooster" /s /q
 mkdir "C:\Program Files\Exatek\ExaGameBooster"
 
 echo F | xcopy /S /Q /Y /F "%~dp0\ExaGameBooster.exe" "C:\Program Files\Exatek\ExaGameBooster\ExaGameBooster.exe*"
-rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\CPUAffinityGameBooster.exe"
+del /f "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\CPUAffinityGameBooster.exe"
 mklink "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\ExaGameBooster.exe" "C:\Program Files\Exatek\CPUAffinityGameBooster\ExaGameBooster.exe"
 start /d "C:\Program Files\Exatek\ExaGameBooster" ExaGameBooster.exe
