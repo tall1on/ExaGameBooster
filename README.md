@@ -13,7 +13,7 @@ P+E cores.
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
 Current Version:
-v2.0.1 ([download](https://github.com/Exatek-Germany/ExaGameBooster/releases/download/v2.0.1/CpuAffinityGameBooster_x64.zip)
+v2.1.0 ([download](https://github.com/Exatek-Germany/ExaGameBooster/releases/download/v2.1.0/ExaGameBooster_x64.zip)
 via GitHub)
 
 ### Roadmap (as of 2023-02-23)
