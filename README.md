@@ -18,7 +18,6 @@ via GitHub)
 
 ### Roadmap (as of 2023-02-23)
 
-- v2.1.0: Support for Intel 12th/13th Gen Mobile Processors + Support for more Games
 - v2.2.0: Launch Improvements for R9 7900X3D/7950X3D + Support for more Games
 - v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games
 
