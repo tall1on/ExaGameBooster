@@ -1,4 +1,4 @@
-// CPUAffinityGameBooster.cpp
+// ExaGameBooster.cpp
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
@@ -10,7 +10,7 @@
 #include <intrin.h>
 #include <map>
 #include <strsafe.h>
-#include "CPUAffinityGameBooster.h"
+#include "ExaGameBooster.h"
 #include <chrono>
 #include <thread>
 #include "Util.h"
@@ -19,9 +19,10 @@
 
 using namespace std;
 
-string games[] = {"cod.exe", "Cyberpunk2077.exe", "FactoryGame.exe", "F1Manager22.exe", "GTA5.exe", "HITMAN3.exe", "javaw.exe", "League of Legends.exe", "LOSTARK.exe", "MonsterHunterRise.exe", "MonsterHunterWorld.exe", "ReadyOrNot.exe", "TheAscent.exe", "TransportFever2.exe", "TS2Prototype-Win64-Shipping.exe", "VALORANT-Win64-Shipping.exe", "RDR2.exe", "witcher3.exe", "Wow.exe"};
+string games[] = {"AssettoCorsa.exe", "Bannerlord.exe", "Bannerlord.Native.exe", "cod.exe", "Cyberpunk2077.exe", "DCS.exe", "FactoryGame.exe", "FarmingSimulator2022.exe", "FIFA23.exe", "F1Manager22.exe", "GenshinImpact.exe", "GoW.exe", "GTA5.exe", "Hearthstone.exe", "HITMAN3.exe", "hlvr.exe", "hops.exe", "minecraft.exe", "Minecraft.exe", "League of Legends.exe", "MonsterHunterRise.exe", "MonsterHunterWorld.exe", "Prison Architect64.exe", "ReadyOrNot.exe", "ShadowOfWar.exe", "starwarsjedifallenorder.exe", "Skyrim.exe", "SkyrimSE.exe", "StarCitizen.exe", "SwGame-Win64-Shipping.exe", "TheAscent.exe", "TransportFever2.exe", "TS2Prototype-Win64-Shipping.exe", "Universe Sandbox VR.exe", "Universe Sandbox x64.exe", "VALORANT-Win64-Shipping.exe", "RDR2.exe", "Warframe.x64.exe", "witcher3.exe", "Wow.exe", "X4.exe"};
+string allCoreNoVCacheGames[] = { "GTA5.exe", "HITMAN3.exe" };
 string cacheGames[] = { "cod.exe", "FactoryGame.exe", "GTA5.exe", "HITMAN3.exe", "VALORANT-Win64-Shipping.exe", "RDR2.exe", "Wow.exe"};
-string services[] = {"chrome.exe", "Discord.exe", "firefox.exe", "L-Connect 3.exe", "msedge.exe", "obs64.exe", "Spotify.exe", "steamwebhelper.exe", "ts3client_win64.exe"};
+string services[] = {"chrome.exe", "Discord.exe", "firefox.exe", "L-Connect 3.exe", "msedge.exe", "obs64.exe", "Spotify.exe", "steamwebhelper.exe", "ts3client_win64.exe", "wallpaper64.exe"};
 
 // AMD Ryzen (5950X, 7950X, 7950X3D P-Die)
 DWORD_PTR ccd0mask = 65535; // Core0 - Core7 (with SMT)
@@ -38,6 +39,7 @@ DWORD_PTR ccd1mask12c = 16773120; // Core0 - Core7 (with SMT)
 DWORD_PTR vcachemask12c = 16773120;  // Core8 - Core15 (with SMT)
 
 //Intel Alder-Lake/Raptor-Lake (P-Cores)
+DWORD_PTR intel4pcoremask = 255; // Core0 - Core5 (with HT)
 DWORD_PTR intel6pcoremask = 4095; // Core0 - Core5 (with HT)
 DWORD_PTR intel8pcoremask = 65535; // Core0 - Core7 (with HT)
 
@@ -87,7 +89,24 @@ DWORD_PTR getGameProcessAffinityMask(string game)
     string CPUBrandString = getCpuBrandString();
 
     // intel is ez, just take p-cores
-    if (CPUBrandString.find("13900") != string::npos || CPUBrandString.find("12900") != string::npos || CPUBrandString.find("13700") != string::npos || CPUBrandString.find("12700") != string::npos)
+    // mobile
+    if (CPUBrandString.find("13980HX") != string::npos || CPUBrandString.find("13950HX") != string::npos || CPUBrandString.find("13900HX") != string::npos || CPUBrandString.find("13850HX") != string::npos || CPUBrandString.find("13700HX") != string::npos || CPUBrandString.find("12950HX") != string::npos || CPUBrandString.find("12900HX") != string::npos || CPUBrandString.find("12850HX") != string::npos || CPUBrandString.find("12800HX") != string::npos)
+    {
+        cout << "found! apply intel8pcoremask" << endl;
+        return intel8pcoremask;
+    }
+    else if (CPUBrandString.find("13900HK") != string::npos || CPUBrandString.find("13905H") != string::npos || CPUBrandString.find("13900H") != string::npos || CPUBrandString.find("13800H") != string::npos || CPUBrandString.find("13705H") != string::npos || CPUBrandString.find("13700H") != string::npos || CPUBrandString.find("13620H") != string::npos || CPUBrandString.find("13650HX") != string::npos || CPUBrandString.find("13600HX") != string::npos || CPUBrandString.find("13500HX") != string::npos || CPUBrandString.find("13450HX") != string::npos || CPUBrandString.find("12900HK") != string::npos || CPUBrandString.find("12900H") != string::npos || CPUBrandString.find("12800H") != string::npos || CPUBrandString.find("12700H") != string::npos || CPUBrandString.find("12650H") != string::npos || CPUBrandString.find("1370P") != string::npos || CPUBrandString.find("1280P") != string::npos)
+    {
+        cout << "found! apply intel6pcoremask" << endl;
+        return intel6pcoremask;
+    }
+    else if (CPUBrandString.find("13600H") != string::npos || CPUBrandString.find("13505H") != string::npos || CPUBrandString.find("13500H") != string::npos || CPUBrandString.find("3420H") != string::npos || CPUBrandString.find("12600H") != string::npos || CPUBrandString.find("12500H") != string::npos || CPUBrandString.find("12450H") != string::npos || CPUBrandString.find("1360P") != string::npos || CPUBrandString.find("1350P") != string::npos || CPUBrandString.find("1340P") != string::npos || CPUBrandString.find("1270P") != string::npos || CPUBrandString.find("1260P") != string::npos || CPUBrandString.find("1250P") != string::npos || CPUBrandString.find("1240P") != string::npos)
+    {
+        cout << "found! apply intel4pcoremask" << endl;
+        return intel4pcoremask;
+    }
+    // desktop
+    else if (CPUBrandString.find("13900") != string::npos || CPUBrandString.find("12900") != string::npos || CPUBrandString.find("13700") != string::npos || CPUBrandString.find("12700") != string::npos)
     {
         cout << "found! apply intel8pcoremask" << endl;
         return intel8pcoremask;
@@ -116,11 +135,6 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         cout << "found! apply ccd0mask" << endl;
         return ccd0mask;
     }
-    else if (CPUBrandString.find("7950X") != string::npos || CPUBrandString.find("5950X") != string::npos || CPUBrandString.find("3950X") != string::npos)
-    {
-        cout << "found! apply ccd0mask" << endl;
-        return ccd0mask;
-    }
     else if (CPUBrandString.find("7900X3D") != string::npos)
     {
         for (string cacheGame : cacheGames) {
@@ -133,6 +147,20 @@ DWORD_PTR getGameProcessAffinityMask(string game)
 
         cout << "found! apply ccd0mask12c" << endl;
         return ccd0mask12c;
+    }
+
+    // only apply vache masks => return to stay all core for other CPUs
+    for (string allCoreGame : allCoreNoVCacheGames) {
+        if (allCoreGame == game)
+        {
+            return 0;
+        }
+    }
+
+    if (CPUBrandString.find("7950X") != string::npos || CPUBrandString.find("5950X") != string::npos || CPUBrandString.find("3950X") != string::npos)
+    {
+        cout << "found! apply ccd0mask" << endl;
+        return ccd0mask;
     }
     else if (CPUBrandString.find("7900") != string::npos || CPUBrandString.find("5900") != string::npos || CPUBrandString.find("3900") != string::npos)
     {

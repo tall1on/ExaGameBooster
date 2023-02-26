@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CPUAffinityGameBooster.cpp">
+    <ClCompile Include="ExaGameBooster.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Util.cpp">
@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CPUAffinityGameBooster.h">
+    <ClInclude Include="ExaGameBooster.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
     <ClInclude Include="Util.h">
@@ -34,7 +34,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="CPUAffinityGameBooster.rc">
+    <ResourceCompile Include="ExaGameBooster.rc">
       <Filter>Ressourcendateien</Filter>
     </ResourceCompile>
   </ItemGroup>

@@ -1,9 +1,9 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by CPUAffinityGameBooster.rc
+// Used by ExaGameBooster.rc
 
-// Nächste Standardwerte für neue Objekte
-// 
+// Nï¿½chste Standardwerte fï¿½r neue Objekte
+//
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        101

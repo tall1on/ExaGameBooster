@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{abba9514-4240-4d06-8514-f2076bb41baf}</ProjectGuid>
-    <RootNamespace>CPUAffinityGameBooster</RootNamespace>
+    <RootNamespace>ExaGameBooster</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,16 +128,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CPUAffinityGameBooster.cpp" />
+    <ClCompile Include="ExaGameBooster.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CPUAffinityGameBooster.h" />
+    <ClInclude Include="ExaGameBooster.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="CPUAffinityGameBooster.rc" />
+    <ResourceCompile Include="ExaGameBooster.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
