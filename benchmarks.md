@@ -1,5 +1,8 @@
 # Benchmarks v2.0.1 (WIP)
 ## Cyberpunk 2077
+
+Preset: Low
+
 ### 1280x720
 |             | Native     | CPUAffinityGameBooster | Improvement |
 | ----------- | :-------   | :--------------------- | :---------- |

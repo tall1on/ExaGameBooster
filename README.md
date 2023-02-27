@@ -5,6 +5,8 @@
 </p>
 
 # ExaGameBooster™
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![Github All Releases](https://img.shields.io/github/downloads/Exatek-Germany/ExaGameBooster/total.svg)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 
 ExaGameBooster™ is a open-source process optimization service for games. This program optimizes core allocations
 for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel
@@ -52,14 +54,14 @@ via GitHub)
 
 #### Intel Raptor Lake (13th Gen)
 
-| Version | i9 13900 | i7 13700 | i5 13600 | i5 13500 | i5 13400 | Mobile CPUs |
+| Version | i9 13900 | i7 13700 | i5 13600 | i5 13500 | i5 13400 | Mobile CPUs (4+ P-Cores) |
 |---------|:--------:|:--------:|:--------:|:--------:|:--------:|:-----------:|
 | 2.1.0   |    ✅     |    ✅     |    ✅     |    ✅     |    ✅     |      ✅      | 
 | 1.0.0   |    ✅     |    ✅     |    ✅     |    ✅     |    ✅     |      ❌      | 
 
 #### Intel Alder Lake (12th Gen)
 
-| Version | i9 12900 | i7 12700 | i5 12600K | Mobile CPUs |
+| Version | i9 12900 | i7 12700 | i5 12600K | Mobile CPUs (4+ P-Cores) |
 |---------|:--------:|:--------:|:---------:|:-----------:|
 | 2.1.0   |    ✅     |    ✅     |     ✅     |      ✅      |
 | 1.0.0   |    ✅     |    ✅     |     ✅     |      ❌      |
