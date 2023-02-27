@@ -5,6 +5,7 @@
 </p>
 
 # ExaGameBooster™
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/Exatek-Germany/ExaGameBooster/total.svg)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 
 ExaGameBooster™ is a open-source process optimization service for games. This program optimizes core allocations
