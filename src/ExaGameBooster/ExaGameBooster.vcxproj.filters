@@ -38,4 +38,9 @@
       <Filter>Ressourcendateien</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="G:\Windows\Downloads\exa.ico">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
