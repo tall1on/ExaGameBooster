@@ -39,7 +39,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="G:\Windows\Downloads\exa.ico">
+    <Image Include="..\..\assets\exa.ico">
       <Filter>Ressourcendateien</Filter>
     </Image>
   </ItemGroup>
