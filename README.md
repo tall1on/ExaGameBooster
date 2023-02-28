@@ -14,10 +14,6 @@ P+E cores.
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
-Current Version:
-v2.1.0 ([download](https://github.com/Exatek-Germany/ExaGameBooster/releases/download/v2.1.0/ExaGameBooster_x64.zip)
-via GitHub)
-
 ### Roadmap (as of 2023-02-26)
 
 - v2.2.0: Launch Improvements for R9 7900X3D/7950X3D + Support for more Games
@@ -111,6 +107,7 @@ systems.
 | Star Citizen                                             |           ✅           |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
 | The Witcher 3                                            |           ✅           |   ✅   |   ✅   |   ✅   |                                                                                                                                                                          |
 | Universe Sandbox                                         |           ✅           |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
+| Valorant                                                 |           ✅           |   ✅   |   ✅   |   ❌   |                                                                                                                                                                          |
 | Warframe                                                 |           ✅           |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
 | World of Warcraft                                        |           ✅           |   ✅   |   ✅   |   ✅   |                                                                                                                                                                          |
 | X4: Foundations                                          |           ✅           |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
