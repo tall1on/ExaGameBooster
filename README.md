@@ -117,3 +117,5 @@ systems.
 | Warframe                                                 |           ✅           |   ✅   |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
 | World of Warcraft                                        |           ✅           |   ✅   |   ✅   |   ✅   |   ✅   |                                                                                                                                                                          |
 | X4: Foundations                                          |           ✅           |   ✅   |   ❌   |   ❌   |   ❌   |                                                                                                                                                                          |
+
+44 Games supported
