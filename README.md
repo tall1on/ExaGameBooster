@@ -18,6 +18,10 @@ This software is provided "as is" without warranty of any kind, either express o
 
 - v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games
 
+### How to install
+
+Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat (administrator rights required) to install the executable and set up the autostart. You can also just run ExaGameBooster.exe to test without installation/autostart.
+
 ### Supported CPU's
 
 > **_NOTE:_**  If your CPU is not in the list, you probably do not need this program. This program solves scheduler
