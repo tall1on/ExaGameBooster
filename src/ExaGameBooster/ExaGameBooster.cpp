@@ -33,13 +33,13 @@ DWORD_PTR vcachemask = 4294901760;  // Core8 - Core15 (with SMT)
 
 // AMD Ryzen (5900X, 7900X, 7900X3D P-Die)
 DWORD_PTR ccd0mask12c = 4095; // Core0 - Core7 (with SMT)
-DWORD_PTR ccd1mask12c = 16773120; // Core0 - Core7 (with SMT)
+DWORD_PTR ccd1mask12c = 16773120; // Core8 - Core15 (with SMT)
 
 // AMD Ryzen (7900X3D Cache-Die)
 DWORD_PTR vcachemask12c = 16773120;  // Core8 - Core15 (with SMT)
 
 //Intel Alder-Lake/Raptor-Lake (P-Cores)
-DWORD_PTR intel4pcoremask = 255; // Core0 - Core5 (with HT)
+DWORD_PTR intel4pcoremask = 255; // Core0 - Core3 (with HT)
 DWORD_PTR intel6pcoremask = 4095; // Core0 - Core5 (with HT)
 DWORD_PTR intel8pcoremask = 65535; // Core0 - Core7 (with HT)
 
