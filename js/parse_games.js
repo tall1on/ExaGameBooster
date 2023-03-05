@@ -47,5 +47,7 @@ axios.get('https://discord.com/api/v8/applications/detectable').then(({status, d
         games.push(game);
     }
 
+    console.log(`Writing support for ${games.length} games`)
+
     fs.writeFileSync('../assets/games.json', JSON.stringify(games));
 });
