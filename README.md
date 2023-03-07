@@ -14,9 +14,10 @@ P+E cores.
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
-### Roadmap (as of 2023-02-28)
+### Roadmap (as of 2023-03-07)
 
-- v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games
+- v2.3.1: V-Cache fixes + improved service relocation for V-Cache (March)
+- v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games (April/May)
 
 ### How to install
 
