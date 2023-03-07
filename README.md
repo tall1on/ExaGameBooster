@@ -34,7 +34,8 @@ Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat 
 | 2.0.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ✅       |
 | 1.1.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ❌       |
 | 1.0.0   |        ✅        |        ❌        |       ✅       |       ❌       |      ❌       |
-* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
+
+\* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
 
 #### AMD Ryzen Vermeer (5000 Series)
 
