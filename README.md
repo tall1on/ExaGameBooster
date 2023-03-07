@@ -29,11 +29,12 @@ Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat 
 
 #### AMD Ryzen Raphael (7000 Series)
 
-| Version | Ryzen 9 7950X3D | Ryzen 9 7900X3D | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
+| Version | Ryzen 9 7950X3D* | Ryzen 9 7900X3D* | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
 |---------|:---------------:|:---------------:|:-------------:|:-------------:|:------------:|
 | 2.0.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ✅       |
 | 1.1.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ❌       |
 | 1.0.0   |        ✅        |        ❌        |       ✅       |       ❌       |      ❌       |
+* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
 
 #### AMD Ryzen Vermeer (5000 Series)
 
