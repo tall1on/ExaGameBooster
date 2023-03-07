@@ -14,9 +14,11 @@ P+E cores.
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
-### Roadmap (as of 2023-02-28)
+### Roadmap (as of 2023-03-07)
 
-- v3.0.0: Improved Installer, New Uninstaller and Updater + Support for more Games
+- v2.3.\*: V-Cache support for more games (March)
+- v2.4.0: Improved service relocation for V-Cache (March)
+- v3.0.0: Improved Installer, New Uninstaller and Updater + V-Cache support for more games (April/May)
 
 ### How to install
 
@@ -29,11 +31,13 @@ Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat 
 
 #### AMD Ryzen Raphael (7000 Series)
 
-| Version | Ryzen 9 7950X3D | Ryzen 9 7900X3D | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
+| Version | Ryzen 9 7950X3D* | Ryzen 9 7900X3D* | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
 |---------|:---------------:|:---------------:|:-------------:|:-------------:|:------------:|
 | 2.0.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ✅       |
 | 1.1.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ❌       |
 | 1.0.0   |        ✅        |        ❌        |       ✅       |       ❌       |      ❌       |
+
+\* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
 
 #### AMD Ryzen Vermeer (5000 Series)
 
