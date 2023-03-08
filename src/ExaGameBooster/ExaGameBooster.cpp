@@ -135,6 +135,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
     if (CPUBrandString.find("7950X3D") != string::npos)
     {
         for (string cacheGame : cacheGames) {
+            // todo: check if compare needs to be lowercased
             if (cacheGame == game)
             {
                 cout << "found! apply vcachemask" << endl;
@@ -149,6 +150,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
     else if (CPUBrandString.find("7900X3D") != string::npos)
     {
         for (string cacheGame : cacheGames) {
+            // todo: check if compare needs to be lowercased
             if (cacheGame == game)
             {
                 cout << "found! apply vcachemask12c" << endl;
