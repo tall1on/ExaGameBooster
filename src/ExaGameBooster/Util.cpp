@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "Util.h"
+#include <algorithm>
 
 std::string wchar2string(wchar_t* str)
 {
@@ -23,4 +24,13 @@ void ShowConsole()
 bool IsConsoleVisible()
 {
     return ::IsWindowVisible(::GetConsoleWindow()) != FALSE;
+}
+
+bool isEqualTo(const std::string& a, const std::string& b)
+{
+    return std::equal(a.begin(), a.end(),
+        b.begin(), b.end(),
+        [](char a, char b) {
+            return tolower(a) == tolower(b);
+        });
 }

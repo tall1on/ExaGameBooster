@@ -132,11 +132,11 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         return 0;
     }
 
-    if (CPUBrandString.find("7950X3D") != string::npos)
+    if (CPUBrandString.find("7950X") != string::npos)
     {
         for (string cacheGame : cacheGames) {
             // todo: check if compare needs to be lowercased
-            if (cacheGame == game)
+            if (isEqualTo(cacheGame, game))
             {
                 cout << "found! apply vcachemask" << endl;
                 vcacheInUse = true;
@@ -151,7 +151,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
     {
         for (string cacheGame : cacheGames) {
             // todo: check if compare needs to be lowercased
-            if (cacheGame == game)
+            if (isEqualTo(cacheGame, game))
             {
                 cout << "found! apply vcachemask12c" << endl;
                 vcacheInUse = true;
@@ -165,7 +165,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
 
     // only apply vache masks => return to stay all core for other CPUs
     for (string allCoreGame : allCoreNoVCacheGames) {
-        if (allCoreGame == game)
+        if (isEqualTo(allCoreGame, game))
         {
             return 0;
         }

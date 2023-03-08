@@ -6,3 +6,5 @@ void HideConsole();
 void ShowConsole();
 
 bool IsConsoleVisible();
+
+bool isEqualTo(const std::string& a, const std::string& b);
