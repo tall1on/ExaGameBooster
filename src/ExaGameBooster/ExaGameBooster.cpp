@@ -132,7 +132,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         return 0;
     }
 
-    if (CPUBrandString.find("7950X") != string::npos)
+    if (CPUBrandString.find("7950X3D") != string::npos)
     {
         for (string cacheGame : cacheGames) {
             // todo: check if compare needs to be lowercased
