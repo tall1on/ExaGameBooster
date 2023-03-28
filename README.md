@@ -7,6 +7,7 @@
 # ExaGameBooster™
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/Exatek-Germany/ExaGameBooster/total.svg)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=Games&message=2057&color=orange)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 
 ExaGameBooster™ is a open-source process optimization service for games. This program optimizes core allocations
 for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel
