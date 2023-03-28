@@ -10,7 +10,7 @@
 [![](https://img.shields.io/static/v1?label=Games&message=2057&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/static/v1?label=platform&message=win-64&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/static/v1?label=dependencies&message=0&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPNhttps://discord.gg/PsR7cbWaPN)
+[![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPN)
 
 
 
