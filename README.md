@@ -7,6 +7,12 @@
 # ExaGameBooster™
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/Exatek-Germany/ExaGameBooster/total.svg)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=Games&message=2057&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=platform&message=win-64&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=dependencies&message=0&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPN)
+
+
 
 ExaGameBooster™ is a open-source process optimization service for games. This program optimizes core allocations
 for games to improve performance and reduce lags. We support modern CPU architectures such as AMD 3D V-Cache™ and Intel
@@ -78,4 +84,4 @@ systems.
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games,
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
-Since version 2.3.0 we support ~2050 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
+Since version v2.3.0 we support ~2050 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
