@@ -13,6 +13,7 @@ axios.get('https://discord.com/api/v8/applications/detectable').then(({status, d
     fs.writeFileSync('../assets/games_raw.json', JSON.stringify(data));
 
     const games = [];
+    const exeToNameMap = {};
     for (let game of data)
     {
         if (game.executables) {
@@ -31,6 +32,8 @@ axios.get('https://discord.com/api/v8/applications/detectable').then(({status, d
                 }
 
                 games.push(exeName);
+
+                exeToNameMap[exeName] = game.aliases;
             }
         }
     }
@@ -49,5 +52,23 @@ axios.get('https://discord.com/api/v8/applications/detectable').then(({status, d
 
     console.log(`Writing support for ${games.length} games`)
 
+    let gamesList = `# Supported games
+\rCurrently supported games: ${games.length}\n\r`;
+    for (let game of games)
+    {
+        if (!exeToNameMap[game])
+        {
+            continue;
+        }
+
+        if (gamesList.includes(exeToNameMap[game][0]))
+        {
+            continue;
+        }
+
+        gamesList += `- ${exeToNameMap[game][0]}\n\r`;
+    }
+
+    fs.writeFileSync('../supportedGames.md', gamesList);
     fs.writeFileSync('../assets/games.json', JSON.stringify(games));
 });
