@@ -294,6 +294,8 @@ DWORD_PTR getServiceProcessAffinityMask(string service)
 
 int main()
 {
+    CheckUpdate();
+
     freopen("output.log", "w", stdout);
     freopen("error.log", "w", stderr);
 
