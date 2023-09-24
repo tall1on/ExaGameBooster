@@ -85,3 +85,5 @@ systems.
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
 Since version v2.3.0 we support ~2050 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
+
+[List of supported games](https://github.com/tall1on/ExaGameBooster/blob/master/supportedGames.md)
