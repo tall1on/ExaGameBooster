@@ -3,7 +3,7 @@
 const axios = require('axios');
 const fs = require('fs');
 
-axios.get('https://discord.com/api/v8/applications/detectable').then(({status, data}) => {
+axios.get('https://discord.com/api/v10/applications/detectable').then(({status, data}) => {
     console.log(status);
 
     if (200 !== status) {
