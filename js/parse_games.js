@@ -4,8 +4,6 @@ const axios = require('axios');
 const fs = require('fs');
 
 axios.get('https://discord.com/api/v10/applications/detectable').then(({status, data}) => {
-    console.log(status);
-
     if (200 !== status) {
         throw new Error('Fetching games failed');
     }
@@ -33,15 +31,13 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
 
                 games.push(exeName);
 
-                exeToNameMap[exeName] = game.aliases;
+                exeToNameMap[exeName] = game.name;
             }
         }
     }
 
     for (let game of JSON.parse(fs.readFileSync('../assets/additional_games.json')))
     {
-        console.log(game)
-
         if (games.includes(game))
         {
             continue;
@@ -50,10 +46,9 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
         games.push(game);
     }
 
-    console.log(`Writing support for ${games.length} games`)
-
+    let gamesCount = 0;
     let gamesList = `# Supported games
-\rCurrently supported games: ${games.length}\n\r`;
+\rCurrently supported games: [SUPPORTED_GAMES]\n\r`;
     for (let game of games)
     {
         if (!exeToNameMap[game])
@@ -61,14 +56,15 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
             continue;
         }
 
-        if (gamesList.includes(exeToNameMap[game][0]))
+        if (gamesList.includes(exeToNameMap[game]))
         {
             continue;
         }
 
-        gamesList += `- ${exeToNameMap[game][0]}\n\r`;
+        gamesList += `- ${exeToNameMap[game]}\n\r`;
+        gamesCount++;
     }
 
-    fs.writeFileSync('../supportedGames.md', gamesList);
+    fs.writeFileSync('../supportedGames.md', gamesList.replace('[SUPPORTED_GAMES]', String(gamesCount)));
     fs.writeFileSync('../assets/games.json', JSON.stringify(games));
 });
