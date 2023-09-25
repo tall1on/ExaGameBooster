@@ -31,6 +31,7 @@ Section
 
     # old cleanup, keep
     Delete "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\ExaGameBooster.exe"
+    Delete "$SMPROGRAMS\Startup\ExaGameBooster.exe"
 
     MessageBox MB_OK "ExaGameBooster was successfully installed."
 SectionEnd
@@ -38,15 +39,16 @@ SectionEnd
 Section "uninstall"
     ExecWait 'taskkill /F /IM "ExaGameBooster.exe"'
 
-    # autostart
-    Delete "$SMPROGRAMS\Startup\ExaGameBooster.exe"
+    SetRegView 64
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster"
+    DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "ExaGameBooster"
+
+    Delete "$INSTDIR\*.*"
+
+    Delete $INSTDIR\ExaGameBooster.exe
 
     # uninstaller
     Delete $INSTDIR\uninstaller.exe
 
-    RMDir $INSTDIR
-
-    SetRegView 64
-    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster"
-    DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "ExaGameBooster"
+    RMDir /r "$INSTDIR"
 SectionEnd
