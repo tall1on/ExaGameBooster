@@ -105,6 +105,8 @@ LRESULT CALLBACK CustomDialogProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM
     switch (message) {
         case WM_INITDIALOG:
             CenterDialog(hwnd);
+            SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_ICON1)));
+            SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_ICON1)));
             return TRUE;
         case WM_COMMAND:
             if (LOWORD(wParam) == IDC_BUTTON1) {
