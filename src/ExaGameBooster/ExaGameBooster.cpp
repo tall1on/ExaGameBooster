@@ -297,8 +297,8 @@ int main()
 {
     std::thread myThread(CheckUpdate);
 
-    freopen("output.log", "w", stdout);
-    freopen("error.log", "w", stderr);
+    //freopen("output.log", "w", stdout);
+    //freopen("error.log", "w", stderr);
 
     bool checkRunning = false;
 

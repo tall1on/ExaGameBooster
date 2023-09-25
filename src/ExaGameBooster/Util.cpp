@@ -142,8 +142,8 @@ bool LessThanVersion(const std::string& a, const std::string& b)
 
 int CheckUpdate()
 {
-    freopen("update.log", "w", stdout);
-    freopen("update_error.log", "w", stderr);
+    //freopen("update.log", "w", stdout);
+    //freopen("update_error.log", "w", stderr);
 
     cout << "update popup! " << endl;
 
