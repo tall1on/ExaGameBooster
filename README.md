@@ -20,10 +20,10 @@ P+E cores.
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
-### Roadmap (as of 2023-03-07)
+### Roadmap (as of 2023-09-24)
 
-- v2.4.\*: V-Cache support for more games (March)
-- v3.0.0: Improved Installer, New Uninstaller and Updater + V-Cache support for more games (April/May)
+- v3.0.0: Improved Installer, New Uninstaller and Updater (October)
+- v3+: V-Cache support for more games
 
 ### How to install
 
@@ -84,6 +84,6 @@ systems.
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games,
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
-Since version v2.4.4 we support ~7090 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
+Since version v3.0.0 we support ~7090 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
 
 [List of supported games](https://github.com/tall1on/ExaGameBooster/blob/master/supportedGames.md)
