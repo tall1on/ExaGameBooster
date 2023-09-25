@@ -18,9 +18,9 @@ Section
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayName" "ExaGameBooster"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "InstallLocation" "$INSTDIR"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Publisher" "Exatek Deutschland"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayVersion" "2.4.4.0"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Major Version" "2"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Minor Version" "4"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayVersion" "3.0.0.0"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Major Version" "3"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Minor Version" "0"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
 
