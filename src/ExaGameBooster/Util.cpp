@@ -54,39 +54,47 @@ string GetCurrentVersion() {
     HINTERNET hSession = WinHttpOpen(L"ExaGameBooster Update Agent/1.0", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
     if (!hSession) {
         std::cerr << "Failed to open session" << std::endl;
+        DWORD dwError = GetLastError();
+        std::cerr << "WinHttpOpen failed with error code: " << dwError << std::endl;
+        return "";
+    }
+
+    HINTERNET hConnect = WinHttpConnect( hSession, L"cdn.exatek.de", INTERNET_DEFAULT_HTTP_PORT, 0);
+    if (!hConnect) {
+        std::cerr << "Failed to open connection" << std::endl;
+        DWORD dwError = GetLastError();
+        std::cerr << "WinHttpConnect failed with error code: " << dwError << std::endl;
         return "";
     }
 
     // Open a connection
-    HINTERNET hConnect = WinHttpOpenRequest(hSession, L"GET", L"cdn.exatek.de", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, WINHTTP_FLAG_SECURE);
-    if (!hConnect) {
-        std::cerr << "Failed to open connection" << std::endl;
-        DWORD dwStatus;
-        DWORD dwStatusSize = sizeof(dwStatus);
-        if (WinHttpQueryHeaders(hConnect, WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER, NULL, &dwStatus, &dwStatusSize, NULL)) {
-            if (dwStatus != HTTP_STATUS_OK) {
-                std::cerr << "HTTP request failed with status code: " << dwStatus << std::endl;
-            }
-        }
-        else {
-            DWORD dwError = GetLastError();
-            std::cerr << "WinHttpQueryHeaders failed with error code: " << dwError << std::endl;
-        }
+    HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"GET", L"/exagamebooster/version.txt", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, WINHTTP_FLAG_SECURE);
+    if (!hRequest) {
+        std::cerr << "Failed to open request" << std::endl;
+        DWORD dwError = GetLastError();
+        std::cerr << "WinHttpOpenRequest failed with error code: " << dwError << std::endl;
+        WinHttpCloseHandle(hConnect);
         WinHttpCloseHandle(hSession);
         return "";
     }
 
     // Send the request
-    if (!WinHttpSendRequest(hConnect, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, 0)) {
+    if (!WinHttpSendRequest(hRequest, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, 0)) {
         std::cerr << "Failed to send request" << std::endl;
+        DWORD dwError = GetLastError();
+        std::cerr << "WinHttpSendRequest failed with error code: " << dwError << std::endl;
+        WinHttpCloseHandle(hRequest);
         WinHttpCloseHandle(hConnect);
         WinHttpCloseHandle(hSession);
         return "";
     }
 
     // Receive the response
-    if (!WinHttpReceiveResponse(hConnect, NULL)) {
+    if (!WinHttpReceiveResponse(hRequest, NULL)) {
         std::cerr << "Failed to receive response" << std::endl;
+        DWORD dwError = GetLastError();
+        std::cerr << "WinHttpReceiveResponse failed with error code: " << dwError << std::endl;
+        WinHttpCloseHandle(hRequest);
         WinHttpCloseHandle(hConnect);
         WinHttpCloseHandle(hSession);
         return "";
@@ -96,12 +104,12 @@ string GetCurrentVersion() {
     string response;
     char buffer[1024];
     DWORD bytesRead = 0;
-    while (WinHttpReadData(hConnect, buffer, sizeof(buffer), &bytesRead) && bytesRead > 0) {
+    while (WinHttpReadData(hRequest, buffer, sizeof(buffer), &bytesRead) && bytesRead > 0) {
         response.append(buffer, bytesRead);
     }
 
     // Clean up
-    WinHttpCloseHandle(hConnect);
+    WinHttpCloseHandle(hRequest);
     WinHttpCloseHandle(hSession);
 
     return response;
