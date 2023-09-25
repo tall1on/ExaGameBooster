@@ -22,7 +22,7 @@ This software is provided "as is" without warranty of any kind, either express o
 
 ### Roadmap (as of 2023-09-25)
 
-- v3+: V-Cache support for more games (2023)
+- v3+: V-Cache support for more games, Support for new 14th Gen Intel processors (2023)
 
 ### How to install
 
