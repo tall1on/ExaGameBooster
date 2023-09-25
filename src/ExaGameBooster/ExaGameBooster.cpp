@@ -14,6 +14,7 @@
 #include <chrono>
 #include <thread>
 #include "Util.h"
+#include <thread>
 
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
@@ -294,7 +295,7 @@ DWORD_PTR getServiceProcessAffinityMask(string service)
 
 int main()
 {
-    CheckUpdate();
+    std::thread myThread(CheckUpdate);
 
     freopen("output.log", "w", stdout);
     freopen("error.log", "w", stderr);

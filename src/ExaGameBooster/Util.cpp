@@ -11,9 +11,9 @@
 #include <windows.h>
 #include <vector>
 #include "resource.h"
-#include <winhttp.h>
+#include <WinINet.h>
 
-#pragma comment(lib, "winhttp.lib")
+#pragma comment(lib, "WinINet.lib")
 
 using namespace std;
 
@@ -49,75 +49,63 @@ bool isEqualTo(const std::string& a, const std::string& b)
         });
 }
 
-// https://stackoverflow.com/questions/47554388/winhttpsendrequest-fails-with-error-winhttp-secure-failure
 string GetCurrentVersion() {
-     // Open a session
-    HINTERNET hSession = WinHttpOpen(L"ExaGameBooster Update Agent/1.0", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
-    if (!hSession) {
-        std::cerr << "Failed to open session" << std::endl;
-        DWORD dwError = GetLastError();
-        std::cerr << "WinHttpOpen failed with error code: " << dwError << std::endl;
-        return "";
-    }
-
-    HINTERNET hConnect = WinHttpConnect( hSession, L"cdn.exatek.de", INTERNET_DEFAULT_HTTP_PORT, 0);
-    if (!hConnect) {
-        std::cerr << "Failed to open connection" << std::endl;
-        DWORD dwError = GetLastError();
-        std::cerr << "WinHttpConnect failed with error code: " << dwError << std::endl;
-        return "";
-    }
-
-    // Open a connection
-    HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"GET", L"/exagamebooster/version.txt", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, WINHTTP_FLAG_SECURE);
-    if (!hRequest) {
-        std::cerr << "Failed to open request" << std::endl;
-        DWORD dwError = GetLastError();
-        std::cerr << "WinHttpOpenRequest failed with error code: " << dwError << std::endl;
-        WinHttpCloseHandle(hConnect);
-        WinHttpCloseHandle(hSession);
-        return "";
-    }
-
-    // Send the request
-    if (!WinHttpSendRequest(hRequest, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, 0)) {
-        std::cerr << "Failed to send request" << std::endl;
-        DWORD dwError = GetLastError();
-        std::cerr << "WinHttpSendRequest failed with error code: " << dwError << std::endl;
-        WinHttpCloseHandle(hRequest);
-        WinHttpCloseHandle(hConnect);
-        WinHttpCloseHandle(hSession);
-        return "";
-    }
-
-    // Receive the response
-    if (!WinHttpReceiveResponse(hRequest, NULL)) {
-        std::cerr << "Failed to receive response" << std::endl;
-        DWORD dwError = GetLastError();
-        std::cerr << "WinHttpReceiveResponse failed with error code: " << dwError << std::endl;
-        WinHttpCloseHandle(hRequest);
-        WinHttpCloseHandle(hConnect);
-        WinHttpCloseHandle(hSession);
-        return "";
-    }
-
+    const wchar_t* url = L"https://cdn.exatek.de/exagamebooster/version.txt";
     // Read and print the response
-    string response;
-    char buffer[1024];
-    DWORD bytesRead = 0;
-    while (WinHttpReadData(hRequest, buffer, sizeof(buffer), &bytesRead) && bytesRead > 0) {
-        response.append(buffer, bytesRead);
-    }
+    string response = "";
+    
+    HINTERNET hopen = InternetOpen(L"ExaGameBooster Update Agent/1.0", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
+    if (hopen)
+    {
+        DWORD flags = INTERNET_FLAG_DONT_CACHE;
+        if (wcsstr(url, L"https://") == url) {
+            flags |= INTERNET_FLAG_SECURE;
+        }
 
-    // Clean up
-    WinHttpCloseHandle(hRequest);
-    WinHttpCloseHandle(hSession);
+        HINTERNET hinternet = InternetOpenUrl(hopen, url, NULL, 0, flags, 0);
+        if (hinternet)
+        {
+            char buffer[1024];
+            DWORD bytesRead = 0;
+            while (InternetReadFile(hinternet, buffer, sizeof(buffer), &bytesRead))
+            {
+                if (!bytesRead) break;
+                response.append(buffer, bytesRead);
+            }
+            std::cout << "success!\n";
+            InternetCloseHandle(hinternet);
+        }
+        InternetCloseHandle(hopen);
+    }
 
     return response;
 }
 
+void CenterDialog(HWND hwndDlg) {
+    // Get the dimensions of the primary monitor
+    int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+    int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+    // Calculate the position to center the dialog
+    int dlgWidth, dlgHeight;
+    RECT rcDlg;
+
+    GetWindowRect(hwndDlg, &rcDlg);
+    dlgWidth = rcDlg.right - rcDlg.left;
+    dlgHeight = rcDlg.bottom - rcDlg.top;
+
+    int x = (screenWidth - dlgWidth) / 2;
+    int y = (screenHeight - dlgHeight) / 2;
+
+    // Set the dialog's position
+    SetWindowPos(hwndDlg, NULL, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+}
+
 LRESULT CALLBACK CustomDialogProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
     switch (message) {
+        case WM_INITDIALOG:
+            CenterDialog(hwnd);
+            return TRUE;
         case WM_COMMAND:
             if (LOWORD(wParam) == IDC_BUTTON1) {
                 // Handle the link click event here (e.g., open a web browser)
@@ -131,6 +119,25 @@ LRESULT CALLBACK CustomDialogProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM
     }
 
     return FALSE;
+}
+
+void Parse(int result[4], const std::string& input)
+{
+    std::istringstream parser(input);
+    parser >> result[0];
+    for (int idx = 1; idx < 4; idx++)
+    {
+        parser.get(); //Skip period
+        parser >> result[idx];
+    }
+}
+
+bool LessThanVersion(const std::string& a, const std::string& b)
+{
+    int parsedA[4], parsedB[4];
+    Parse(parsedA, a);
+    Parse(parsedB, b);
+    return std::lexicographical_compare(parsedA, parsedA + 4, parsedB, parsedB + 4);
 }
 
 int CheckUpdate()
@@ -149,13 +156,13 @@ int CheckUpdate()
     cout << currentVersion << endl;
 
     // Your software's current version
-    std::string localVersion = "2.0.0.0";
+    std::string localVersion = "3.0.0.0";
 
     cout << currentVersion << endl;
     cout << localVersion << endl;
 
     // Compare versions
-    if (currentVersion > localVersion) {
+    if (LessThanVersion(localVersion, currentVersion)) {
         HINSTANCE hInstance = GetModuleHandle(NULL);
 
         cout << "update popup! " << endl;
