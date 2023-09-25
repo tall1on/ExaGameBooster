@@ -1,3 +1,13 @@
+VIProductVersion                 "3.0.0.0"
+VIAddVersionKey ProductName      "ExaGameBooster Installer"
+VIAddVersionKey CompanyName      "Exatek Deutschland"
+VIAddVersionKey LegalCopyright   "Copyright (C) 2022-2023 Exatek Deutschland"
+VIAddVersionKey FileDescription  "ExaGameBooster"
+VIAddVersionKey FileVersion      "3.0.0.0"
+VIAddVersionKey ProductVersion   "3.0.0.0"
+VIAddVersionKey LegalTrademarks  "ExaGameBooster, Exatek Deutschland"
+VIAddVersionKey OriginalFilename "Installer.exe"
+
 OutFile "Installer.exe"
 
 InstallDir "C:\Program Files\Exatek\ExaGameBooster"
