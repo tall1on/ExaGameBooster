@@ -49,6 +49,7 @@ bool isEqualTo(const std::string& a, const std::string& b)
         });
 }
 
+// https://stackoverflow.com/questions/47554388/winhttpsendrequest-fails-with-error-winhttp-secure-failure
 string GetCurrentVersion() {
      // Open a session
     HINTERNET hSession = WinHttpOpen(L"ExaGameBooster Update Agent/1.0", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
