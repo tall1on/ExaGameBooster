@@ -26,7 +26,7 @@ This software is provided "as is" without warranty of any kind, either express o
 
 ### How to install
 
-Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat (administrator rights required) to install the executable and set up the autostart. You can also just run ExaGameBooster.exe to test without installation/autostart.
+Simply download and run the Installer.exe executable (administrator privileges required). This will install the service and set up the autostart.
 
 ### Supported CPU's
 
@@ -95,5 +95,7 @@ systems.
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
 Since version v3.0.0 we support ~6470 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
+
+> **_NOTE:_**  We will wait to add CS2 support until we can test anti-cheat compatibility after the full release and check back with Valve to see if any changes in VAC could affect ExaGameBooster compatibility. This is done to avoid the risk of VAC bans. Please wait until we have clarified this.
 
 [List of supported games](https://github.com/tall1on/ExaGameBooster/blob/master/supportedGames.md)
