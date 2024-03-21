@@ -7,7 +7,7 @@
 # ExaGameBooster™
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/Exatek-Germany/ExaGameBooster/total.svg)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/static/v1?label=Games&message=6470&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=Games&message=7606&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/static/v1?label=platform&message=win-64&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/static/v1?label=dependencies&message=0&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPN)
@@ -99,7 +99,7 @@ systems.
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games,
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
-Since version v3.0.1 we support ~6910 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
+Since version v3.0.1 we support ~7600 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
 
 > **_NOTE:_**  We will wait to add CS2 support until we can test anti-cheat compatibility after the full release and check back with Valve to see if any changes in VAC could affect ExaGameBooster compatibility. This is done to avoid the risk of VAC bans. Please wait until we have clarified this.
 
