@@ -1,10 +1,10 @@
-VIProductVersion                 "3.0.0.0"
+VIProductVersion                 "3.0.1.0"
 VIAddVersionKey ProductName      "ExaGameBooster Installer"
 VIAddVersionKey CompanyName      "Exatek Deutschland"
-VIAddVersionKey LegalCopyright   "Copyright (C) 2022-2023 Exatek Deutschland"
+VIAddVersionKey LegalCopyright   "Copyright (C) 2022-2024 Exatek Deutschland"
 VIAddVersionKey FileDescription  "ExaGameBooster"
-VIAddVersionKey FileVersion      "3.0.0.0"
-VIAddVersionKey ProductVersion   "3.0.0.0"
+VIAddVersionKey FileVersion      "3.0.1.0"
+VIAddVersionKey ProductVersion   "3.0.1.0"
 VIAddVersionKey LegalTrademarks  "ExaGameBooster, Exatek Deutschland"
 VIAddVersionKey OriginalFilename "Installer.exe"
 
@@ -21,14 +21,13 @@ Section
     File "ExaGameBooster.exe"
 
     # autostart
-
     SetRegView 64
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "ExaGameBooster" '"$InstDir\ExaGameBooster.exe"'
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayIcon" "$INSTDIR\ExaGameBooster.exe"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayName" "ExaGameBooster"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "InstallLocation" "$INSTDIR"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Publisher" "Exatek Deutschland"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayVersion" "3.0.0.0"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "DisplayVersion" "3.0.1.0"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Major Version" "3"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "Minor Version" "0"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ExaGameBooster" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""

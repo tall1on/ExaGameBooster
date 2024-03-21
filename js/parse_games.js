@@ -2,6 +2,7 @@
 
 const axios = require('axios');
 const fs = require('fs');
+const excludeGames = JSON.parse(fs.readFileSync('../assets/exclude_games.json'));
 
 axios.get('https://discord.com/api/v10/applications/detectable').then(({status, data}) => {
     if (200 !== status) {
@@ -24,7 +25,7 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
 
                 let exeName = executable.name.split('/').pop();
 
-                if (games.includes(exeName))
+                if (games.includes(exeName) || excludeGames.includes(exeName))
                 {
                     continue;
                 }
@@ -46,6 +47,7 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
         games.push(game);
     }
 
+    const gameNames = [];
     let gamesCount = 0;
     let gamesList = `# Supported games
 \rCurrently supported games: [SUPPORTED_GAMES]\n\r`;
@@ -61,10 +63,18 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
             continue;
         }
 
-        gamesList += `- ${exeToNameMap[game]}\n\r`;
+        gameNames.push(exeToNameMap[game]);
+    }
+
+    gameNames.sort();
+
+    for (let gameName of gameNames)
+    {
+        gamesList += `- ${gameName}\n\r`;
         gamesCount++;
     }
 
     fs.writeFileSync('../supportedGames.md', gamesList.replace('[SUPPORTED_GAMES]', String(gamesCount)));
     fs.writeFileSync('../assets/games.json', JSON.stringify(games));
+    fs.writeFileSync('../assets/game_names.json', JSON.stringify(gameNames));
 });

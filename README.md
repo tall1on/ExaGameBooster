@@ -20,14 +20,18 @@ P+E cores.
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
-### Roadmap (as of 2023-09-24)
+### Roadmap (as of 2024-03-21)
 
-- v3.0.0: Improved Installer, New Uninstaller and Updater (October)
-- v3+: V-Cache support for more games
+- v3.1: Support for new Zen5 products (12/16 cores)
+- v3.1+: Support for more games (including V-Cache optimizations)
+
+### Survey on support for the 14th generation of Intel and future Intel products
+
+Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBPgJ
 
 ### How to install
 
-Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat (administrator rights required) to install the executable and set up the autostart. You can also just run ExaGameBooster.exe to test without installation/autostart.
+Simply download and start the Installer.exe (administrator rights required) to install the executable and set up the autostart.
 
 ### Supported CPU's
 
@@ -36,11 +40,12 @@ Simply download and open the ExaGameBooster_64.zip archive. Run the install.bat 
 
 #### AMD Ryzen Raphael (7000 Series)
 
-| Version | Ryzen 9 7950X3D* | Ryzen 9 7900X3D* | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
-|---------|:---------------:|:---------------:|:-------------:|:-------------:|:------------:|
-| 2.0.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ✅       |
-| 1.1.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ❌       |
-| 1.0.0   |        ✅        |        ❌        |       ✅       |       ❌       |      ❌       |
+| Version | Ryzen 9 7950X3D* | Ryzen 9 7900X3D* | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 | Ryzen 9 7945HX | Ryzen 9 7945HX3D* |
+|---------|:----------------:|:----------------:|:-------------:|:-------------:|:------------:|:--------------:|:-----------------:|
+| 3.0.0   |        ✅         |        ✅         |       ✅       |       ✅       |      ✅       |       ✅        |         ✅         |
+| 2.0.0   |        ✅         |        ✅         |       ✅       |       ✅       |      ✅       |       ❌        |         ❌         |
+| 1.1.0   |        ✅         |        ✅         |       ✅       |       ✅       |      ❌       |       ❌        |         ❌         |
+| 1.0.0   |        ✅         |        ❌         |       ✅       |       ❌       |      ❌       |       ❌        |         ❌         |
 
 \* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
 
@@ -84,6 +89,6 @@ systems.
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games,
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
-Since version v3.0.0 we support ~6470 games. BattlEye and VAC games are now also supported. Please note that Easy Anti Cheat games are not supported because they block CPU affinity settings.
+Since version v3.0.0 we support ~6910 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
 
 [List of supported games](https://github.com/tall1on/ExaGameBooster/blob/master/supportedGames.md)
