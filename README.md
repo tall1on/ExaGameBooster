@@ -31,7 +31,7 @@ Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBP
 
 ### How to install
 
-Simply download and run the Installer.exe executable (administrator privileges required). This will install the service and set up the autostart.
+Simply download and run the Installer.exe executable (administrator privileges required). This will install the service and set up the autostart. You can also just run ExaGameBooster.exe to test without installation/autostart.
 
 ### Supported CPU's
 
