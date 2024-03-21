@@ -31,7 +31,7 @@ Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBP
 
 ### How to install
 
-Simply download and start the Installer.exe (administrator rights required) to install the executable and set up the autostart.
+Simply download and run the Installer.exe executable (administrator privileges required). This will install the service and set up the autostart.
 
 ### Supported CPU's
 
@@ -40,12 +40,22 @@ Simply download and start the Installer.exe (administrator rights required) to i
 
 #### AMD Ryzen Raphael (7000 Series)
 
-| Version | Ryzen 9 7950X3D* | Ryzen 9 7900X3D* | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 | Ryzen 9 7945HX | Ryzen 9 7945HX3D* |
-|---------|:----------------:|:----------------:|:-------------:|:-------------:|:------------:|:--------------:|:-----------------:|
-| 3.0.0   |        ✅         |        ✅         |       ✅       |       ✅       |      ✅       |       ✅        |         ✅         |
-| 2.0.0   |        ✅         |        ✅         |       ✅       |       ✅       |      ✅       |       ❌        |         ❌         |
-| 1.1.0   |        ✅         |        ✅         |       ✅       |       ✅       |      ❌       |       ❌        |         ❌         |
-| 1.0.0   |        ✅         |        ❌         |       ✅       |       ❌       |      ❌       |       ❌        |         ❌         |
+| Version | Ryzen 9 7950X3D* | Ryzen 9 7900X3D* | Ryzen 9 7950X | Ryzen 9 7900X | Ryzen 9 7900 |
+|---------|:---------------:|:---------------:|:-------------:|:-------------:|:------------:|
+| 2.0.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ✅       |
+| 1.1.0   |        ✅        |        ✅        |       ✅       |       ✅       |      ❌       |
+| 1.0.0   |        ✅        |        ❌        |       ✅       |       ❌       |      ❌       |
+
+\* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
+
+#### AMD Ryzen Dragon Range (7000 Mobile Series)
+
+| Version | Ryzen 9 7945HX3D* | Ryzen 9 7945HX |
+|---------|:---------------:|:---------------:|
+| 3.0.0   |        ✅        |        ✅        |
+| 2.0.0   |        ❌        |        ❌        |
+| 1.1.0   |        ❌        |        ❌        |
+| 1.0.0   |        ❌        |        ❌        |
 
 \* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
 
@@ -89,6 +99,8 @@ systems.
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games,
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
-Since version v3.0.0 we support ~6910 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
+Since version v3.0.1 we support ~6910 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
+
+> **_NOTE:_**  We will wait to add CS2 support until we can test anti-cheat compatibility after the full release and check back with Valve to see if any changes in VAC could affect ExaGameBooster compatibility. This is done to avoid the risk of VAC bans. Please wait until we have clarified this.
 
 [List of supported games](https://github.com/tall1on/ExaGameBooster/blob/master/supportedGames.md)
