@@ -158,7 +158,7 @@ int CheckUpdate()
     cout << currentVersion << endl;
 
     // Your software's current version
-    std::string localVersion = "3.0.1.0";
+    std::string localVersion = "3.0.2.0";
 
     cout << currentVersion << endl;
     cout << localVersion << endl;

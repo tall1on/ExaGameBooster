@@ -99,7 +99,7 @@ systems.
 > **_NOTE:_**  We are constantly working to test and add new games. If you would like to see support for specific games,
 > please create an issue on GitHub or email us at gamebooster@exatek.de.
 
-Since version v3.0.1 we support ~7600 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
+Since version v3.0.2 we support ~7200 games. BattlEye and VAC games are now also supported. Please note that some Easy Anti Cheat games are not supported because they block CPU affinity settings.
 
 > **_NOTE:_**  We will wait to add CS2 support until we can test anti-cheat compatibility after the full release and check back with Valve to see if any changes in VAC could affect ExaGameBooster compatibility. This is done to avoid the risk of VAC bans. Please wait until we have clarified this.
 
