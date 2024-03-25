@@ -50,7 +50,7 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
     const gameNames = [];
     let gamesCount = 0;
     let gamesList = `# Supported games
-\rCurrently supported games: [SUPPORTED_GAMES]\n\r`;
+\rCurrently supported games: [SUPPORTED_GAMES]\n\rYou can now search the supported games on our website: [Search Games](https://exatek.de/products/exa-game-booster)`;
     for (let game of games)
     {
         if (!exeToNameMap[game])
@@ -70,7 +70,6 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
 
     for (let gameName of gameNames)
     {
-        gamesList += `- ${gameName}\n\r`;
         gamesCount++;
     }
 

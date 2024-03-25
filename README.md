@@ -103,4 +103,4 @@ Since version v3.0.1 we support ~7600 games. BattlEye and VAC games are now also
 
 > **_NOTE:_**  We will wait to add CS2 support until we can test anti-cheat compatibility after the full release and check back with Valve to see if any changes in VAC could affect ExaGameBooster compatibility. This is done to avoid the risk of VAC bans. Please wait until we have clarified this.
 
-[List of supported games](https://github.com/tall1on/ExaGameBooster/blob/master/supportedGames.md)
+You can now search the supported games on our website: [Search Games](https://exatek.de/products/exa-game-booster)
