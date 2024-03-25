@@ -58,7 +58,7 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
             continue;
         }
 
-        if (gamesList.includes(exeToNameMap[game]))
+        if (gameNames.includes(exeToNameMap[game]))
         {
             continue;
         }
