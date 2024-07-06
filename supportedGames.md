@@ -1,3 +1,3 @@
 # Supported games
-Currently supported games: 7213
+Currently supported games: 7599
 You can now search the supported games on our website: [Search Games](https://exatek.de/products/exa-game-booster)
