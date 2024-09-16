@@ -22,9 +22,10 @@ This software is provided "as is" without warranty of any kind, either express o
 
 ### Roadmap (as of 2024-03-25)
 
-- v3.1: Support for 14th Gen Intel products (03/2024)
-- v3.2: Support for new 12/16 cores AMD Zen 5 products (~09/2024)
-- Continous: Support for more games (including V-Cache optimizations)
+- v3.1: We are currently working on fixing false positive antivirus detections. New Features are delayed until the issue is fixed
+- v3.1: Support for new 12/16 cores AMD Zen 5 products (In Master, will release with Antivirus fixes)
+- Support for 14th Gen Intel products (Planned)
+- Continuous: Support for more games (including V-Cache optimizations)
 
 ### Survey on support for the 14th generation of Intel and future Intel products
 
