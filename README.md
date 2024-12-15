@@ -10,7 +10,7 @@
 # ExaGameBooster™
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/static/v1?label=Games&message=7871&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/static/v1?label=platform&message=Windows-11-64Bit&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=platform&message=Windows%2011%2064-Bit&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPN)
 
 
