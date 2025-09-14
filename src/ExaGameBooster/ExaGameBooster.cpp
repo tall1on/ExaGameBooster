@@ -334,9 +334,9 @@ int main()
 
                         DWORD_PTR oldPriorityClass = GetPriorityClass(hProcess);
 
-                        if (HIGH_PRIORITY_CLASS != oldPriorityClass)
+                        if (ABOVE_NORMAL_PRIORITY_CLASS != oldPriorityClass)
                         {
-                            SetPriorityClass(hProcess, HIGH_PRIORITY_CLASS);
+                            SetPriorityClass(hProcess, ABOVE_NORMAL_PRIORITY_CLASS);
                         }
 
                         if (0 == mask)
