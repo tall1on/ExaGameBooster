@@ -2,6 +2,7 @@
 ## Cyberpunk 2077
 
 Preset: Low
+Test: Built-In Benchmark
 
 ### 1280x720
 |             | Native     | ExaGameBooster  | Improvement |
