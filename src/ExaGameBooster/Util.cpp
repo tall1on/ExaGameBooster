@@ -11,9 +11,9 @@
 #include <windows.h>
 #include <vector>
 #include "resource.h"
-#include <WinINet.h>
+#include <winhttp.h>
 
-#pragma comment(lib, "WinINet.lib")
+#pragma comment(lib, "winhttp.lib")
 
 using namespace std;
 
@@ -50,33 +50,57 @@ bool isEqualTo(const std::string& a, const std::string& b)
 }
 
 string GetCurrentVersion() {
-    const wchar_t* url = L"https://cdn.exatek.de/exagamebooster/version.txt";
     // Read and print the response
     string response = "";
-    
-    HINTERNET hopen = InternetOpen(L"ExaGameBooster Update Agent/1.0", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
-    if (hopen)
-    {
-        DWORD flags = INTERNET_FLAG_DONT_CACHE;
-        if (wcsstr(url, L"https://") == url) {
-            flags |= INTERNET_FLAG_SECURE;
-        }
 
-        HINTERNET hinternet = InternetOpenUrl(hopen, url, NULL, 0, flags, 0);
-        if (hinternet)
-        {
-            char buffer[1024];
-            DWORD bytesRead = 0;
-            while (InternetReadFile(hinternet, buffer, sizeof(buffer), &bytesRead))
-            {
-                if (!bytesRead) break;
-                response.append(buffer, bytesRead);
-            }
-            std::cout << "success!\n";
-            InternetCloseHandle(hinternet);
-        }
-        InternetCloseHandle(hopen);
+    HINTERNET hSession = WinHttpOpen(
+        L"ExaGameBooster/1.0",
+        WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
+        WINHTTP_NO_PROXY_NAME,
+        WINHTTP_NO_PROXY_BYPASS,
+        0);
+    if (!hSession)
+        return response;
+
+    HINTERNET hConnect = WinHttpConnect(
+        hSession,
+        L"cdn.exatek.de",
+        INTERNET_DEFAULT_HTTPS_PORT,
+        0);
+    if (!hConnect) {
+        WinHttpCloseHandle(hSession);
+        return response;
     }
+
+    HINTERNET hRequest = WinHttpOpenRequest(
+        hConnect,
+        L"GET",
+        L"/exagamebooster/version.txt",
+        NULL,
+        WINHTTP_NO_REFERER,
+        WINHTTP_DEFAULT_ACCEPT_TYPES,
+        WINHTTP_FLAG_SECURE);
+    if (!hRequest) {
+        WinHttpCloseHandle(hConnect);
+        WinHttpCloseHandle(hSession);
+        return response;
+    }
+
+    if (WinHttpSendRequest(hRequest, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, 0) &&
+        WinHttpReceiveResponse(hRequest, NULL))
+    {
+        char buffer[1024];
+        DWORD bytesRead = 0;
+        while (WinHttpReadData(hRequest, buffer, sizeof(buffer), &bytesRead) && bytesRead > 0)
+        {
+            response.append(buffer, bytesRead);
+        }
+        std::cout << "success!\n";
+    }
+
+    WinHttpCloseHandle(hRequest);
+    WinHttpCloseHandle(hConnect);
+    WinHttpCloseHandle(hSession);
 
     return response;
 }
