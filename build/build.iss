@@ -22,8 +22,8 @@ DefaultDirName={commonpf64}\Exatek\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-; Output directory is set by the build script via /O flag; default to dist/ relative to repo root
-OutputDir=..\dist
+; Output directory: build/Output/ relative to repo root (this file lives in build/)
+OutputDir=Output
 OutputBaseFilename=Installer
 ; Use non-solid compression to reduce packer heuristic triggers
 Compression=lzma2/ultra
@@ -58,6 +58,6 @@ Filename: "taskkill.exe"; Parameters: "/im ""{#MyAppExeName}"" /f"; Flags: skipi
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-; Path is relative to the location of this .iss file (build/) - exe is placed in dist/ by build.bat
-Source: "..\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+; Path is relative to the location of this .iss file (build/) - exe is placed in build/ by build.bat
+Source: "{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
