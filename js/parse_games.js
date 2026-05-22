@@ -2,14 +2,15 @@
 
 const axios = require('axios');
 const fs = require('fs');
-const excludeGames = JSON.parse(fs.readFileSync('../assets/exclude_games.json'));
+const path = require('path');
+const excludeGames = JSON.parse(fs.readFileSync(path.join(__dirname, '../assets/exclude_games.json')));
 
 axios.get('https://discord.com/api/v10/applications/detectable').then(({status, data}) => {
     if (200 !== status) {
         throw new Error('Fetching games failed');
     }
 
-    fs.writeFileSync('../assets/games_raw.json', JSON.stringify(data));
+    fs.writeFileSync(path.join(__dirname, '../assets/games_raw.json'), JSON.stringify(data));
 
     const games = [];
     const exeToNameMap = {};
@@ -37,7 +38,7 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
         }
     }
 
-    for (let game of JSON.parse(fs.readFileSync('../assets/additional_games.json')))
+    for (let game of JSON.parse(fs.readFileSync(path.join(__dirname, '../assets/additional_games.json'))))
     {
         if (games.includes(game))
         {
@@ -73,7 +74,7 @@ axios.get('https://discord.com/api/v10/applications/detectable').then(({status, 
         gamesCount++;
     }
 
-    fs.writeFileSync('../supportedGames.md', gamesList.replace('[SUPPORTED_GAMES]', String(gamesCount)));
-    fs.writeFileSync('../assets/games.json', JSON.stringify(games));
-    fs.writeFileSync('../assets/game_names.json', JSON.stringify(gameNames));
+    fs.writeFileSync(path.join(__dirname, '../supportedGames.md'), gamesList.replace('[SUPPORTED_GAMES]', String(gamesCount)));
+    fs.writeFileSync(path.join(__dirname, '../assets/games.json'), JSON.stringify(games));
+    fs.writeFileSync(path.join(__dirname, '../assets/game_names.json'), JSON.stringify(gameNames));
 });
