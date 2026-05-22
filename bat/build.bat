@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
 :: ============================================================
 :: build.bat
@@ -10,42 +10,65 @@ setlocal
 
 set "REPO_ROOT=%~dp0.."
 set "SLN_FILE=%REPO_ROOT%\src\ExaGameBooster.sln"
-set "BUILD_OUTPUT=%REPO_ROOT%\src\ExaGameBooster\x64\Release\ExaGameBooster.exe"
-set "DIST_DIR=%REPO_ROOT%\dist"
+set "BUILD_OUTPUT=%REPO_ROOT%\src\x64\Release\ExaGameBooster.exe"
+set "DIST_DIR=%REPO_ROOT%\build"
 
 :: ---- Locate MSBuild ----
 set "MSBUILD="
+set "PF=%ProgramFiles%"
+set "PF86=%ProgramFiles(x86)%"
 
-:: Visual Studio 2022
-if exist "%ProgramFiles%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
-) else if exist "%ProgramFiles%\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles%\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe"
-) else if exist "%ProgramFiles%\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles%\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
-) else if exist "%ProgramFiles%\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles%\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe"
-:: Visual Studio 2019
-) else if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"
-) else if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe"
-) else if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
-) else if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe" (
-    set "MSBUILD=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe"
-) else (
-    :: Try PATH
-    where MSBuild.exe >nul 2>&1
-    if %errorlevel% equ 0 (
-        set "MSBUILD=MSBuild.exe"
-    ) else (
-        echo ERROR: MSBuild.exe not found.
-        echo Please install Visual Studio 2019/2022 (with C++ workload) or Build Tools.
-        exit /b 1
-    )
+:: Visual Studio 2022 Community
+if exist "%PF%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
 )
+:: Visual Studio 2022 Professional
+if exist "%PF%\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF%\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Visual Studio 2022 Enterprise
+if exist "%PF%\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF%\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Visual Studio 2022 BuildTools
+if exist "%PF%\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF%\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Visual Studio 2019 Community
+if exist "%PF86%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF86%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Visual Studio 2019 Professional
+if exist "%PF86%\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF86%\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Visual Studio 2019 Enterprise
+if exist "%PF86%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF86%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Visual Studio 2019 BuildTools
+if exist "%PF86%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe" (
+    set "MSBUILD=%PF86%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe"
+    goto :msbuild_found
+)
+:: Try PATH
+where MSBuild.exe >nul 2>&1
+if %errorlevel% equ 0 (
+    set "MSBUILD=MSBuild.exe"
+    goto :msbuild_found
+)
+echo ERROR: MSBuild.exe not found.
+echo Please install Visual Studio 2019/2022 (with C++ workload) or Build Tools.
+exit /b 1
 
+:msbuild_found
 echo Using MSBuild: %MSBUILD%
 echo Building solution: %SLN_FILE%
 echo Configuration: Release^|x64

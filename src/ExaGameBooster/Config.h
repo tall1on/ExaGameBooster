@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
+#include <vector>
 
-extern std::string games[];
-extern std::string allCoreNoVCacheGames[];
-extern std::string cacheGames[];
-extern std::string services[];
+extern std::vector<std::string> games;
+extern std::vector<std::string> allCoreNoVCacheGames;
+extern std::vector<std::string> cacheGames;
+extern std::vector<std::string> services;
