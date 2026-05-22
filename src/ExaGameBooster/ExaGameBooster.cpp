@@ -45,7 +45,8 @@ DWORD_PTR intel6p4ecoremask = 61440; // (8+4) 12600 + 13400
 DWORD_PTR intel6p8ecoremask = 1044480; // (6+8) 13600 + 13500
 DWORD_PTR intel8p4ecoremask = 983040; // (8+4) 12700
 DWORD_PTR intel8p8ecoremask = 16711680; // (8+8) 12900 + 13700
-DWORD_PTR intel8p16ecoremask = 4294901760; // (8+16) 13900
+DWORD_PTR intel8p12ecoremask_rl = 268369920; // (8+12) 14700 - E-cores at logical 16-27
+DWORD_PTR intel8p16ecoremask = 4294901760; // (8+16) 13900 + 14900
 
 // Intel Arrow Lake (Core Ultra 200 series) - NO Hyper-Threading on P-cores or E-cores
 // P-cores come first in the logical processor numbering, then E-cores
@@ -166,7 +167,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         gameMaskCache[game] = intel4pcoremask;
         return intel4pcoremask;
     }
-    // desktop
+    // desktop - 12th/13th gen (Alder/Raptor Lake)
     else if (CPUBrandString.find("13900") != string::npos || CPUBrandString.find("12900") != string::npos || CPUBrandString.find("13700") != string::npos || CPUBrandString.find("12700") != string::npos)
     {
         cout << "found! apply intel8pcoremask" << endl;
@@ -178,6 +179,28 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         cout << "found! apply intel6pcoremask" << endl;
         gameMaskCache[game] = intel6pcoremask;
         return intel6pcoremask;
+    }
+    // desktop - 14th gen (Raptor Lake Refresh) - P-cores have HT, E-cores do not
+    else if (CPUBrandString.find("14900") != string::npos || CPUBrandString.find("14700") != string::npos)
+    {
+        // 14900: 8P+16E=32T, 14700: 8P+12E=28T - P-cores = logical 0-15 (8P x 2HT)
+        cout << "found! apply intel8pcoremask (14900/14700)" << endl;
+        gameMaskCache[game] = intel8pcoremask;
+        return intel8pcoremask;
+    }
+    else if (CPUBrandString.find("14600") != string::npos || CPUBrandString.find("14500") != string::npos || CPUBrandString.find("14400") != string::npos)
+    {
+        // 14600/14500: 6P+8E=20T, 14400: 6P+4E=16T - P-cores = logical 0-11 (6P x 2HT)
+        cout << "found! apply intel6pcoremask (14600/14500/14400)" << endl;
+        gameMaskCache[game] = intel6pcoremask;
+        return intel6pcoremask;
+    }
+    else if (CPUBrandString.find("14100") != string::npos)
+    {
+        // 14100: 4P+0E=8T - P-cores = logical 0-7 (4P x 2HT)
+        cout << "found! apply intel4pcoremask (14100)" << endl;
+        gameMaskCache[game] = intel4pcoremask;
+        return intel4pcoremask;
     }
     // Intel Arrow Lake (Core Ultra 200 series) - no Hyper-Threading, P-cores only for games
     // Must be checked before the generic "Intel" fallback
@@ -359,6 +382,42 @@ DWORD_PTR getServiceProcessAffinityMask(string service)
         cout << "found! apply intel6p4ecoremask" << endl;
         serviceMaskCache[service] = intel6p4ecoremask;
         return intel6p4ecoremask;
+    }
+    // 14th gen (Raptor Lake Refresh) - services go to E-cores (no HT on E-cores)
+    else if (CPUBrandString.find("14900") != string::npos)
+    {
+        // 14900: 8P+16E=32T - E-cores = logical 16-31
+        cout << "found! apply intel8p16ecoremask (14900)" << endl;
+        serviceMaskCache[service] = intel8p16ecoremask;
+        return intel8p16ecoremask;
+    }
+    else if (CPUBrandString.find("14700") != string::npos)
+    {
+        // 14700: 8P+12E=28T - E-cores = logical 16-27
+        cout << "found! apply intel8p12ecoremask_rl (14700)" << endl;
+        serviceMaskCache[service] = intel8p12ecoremask_rl;
+        return intel8p12ecoremask_rl;
+    }
+    else if (CPUBrandString.find("14600") != string::npos || CPUBrandString.find("14500") != string::npos)
+    {
+        // 14600/14500: 6P+8E=20T - E-cores = logical 12-19
+        cout << "found! apply intel6p8ecoremask (14600/14500)" << endl;
+        serviceMaskCache[service] = intel6p8ecoremask;
+        return intel6p8ecoremask;
+    }
+    else if (CPUBrandString.find("14400") != string::npos)
+    {
+        // 14400: 6P+4E=16T - E-cores = logical 12-15
+        cout << "found! apply intel6p4ecoremask (14400)" << endl;
+        serviceMaskCache[service] = intel6p4ecoremask;
+        return intel6p4ecoremask;
+    }
+    else if (CPUBrandString.find("14100") != string::npos)
+    {
+        // 14100: 4P+0E=8T - no E-cores, trust scheduler
+        cout << "found! 14100 no E-cores, trust scheduler" << endl;
+        serviceMaskCache[service] = 0;
+        return 0;
     }
     // Intel Arrow Lake (Core Ultra 200 series) - services go to E-cores
     // Matches all variants: K, KF, F, T, non-suffix
