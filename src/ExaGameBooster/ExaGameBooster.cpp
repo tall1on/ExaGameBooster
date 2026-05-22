@@ -247,7 +247,23 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         return 0;
     }
 
-    if (CPUBrandString.find("9950X3D2") != string::npos || CPUBrandString.find("9950X3D") != string::npos || CPUBrandString.find("7950X3D") != string::npos || CPUBrandString.find("7945HX3D") != string::npos)
+    // Ryzen 9000 X3D: always run games on X3D (vcache) cores, no cacheGames check
+    if (CPUBrandString.find("9950X3D2") != string::npos || CPUBrandString.find("9950X3D") != string::npos)
+    {
+        cout << "found! apply vcachemask (Ryzen 9000 X3D always on vcache)" << endl;
+        vcacheInUse = true;
+        gameMaskCache[game] = vcachemask;
+        return vcachemask;
+    }
+    else if (CPUBrandString.find("9900X3D") != string::npos)
+    {
+        cout << "found! apply vcachemask12c (Ryzen 9000 X3D always on vcache)" << endl;
+        vcacheInUse = true;
+        gameMaskCache[game] = vcachemask12c;
+        return vcachemask12c;
+    }
+    // Ryzen 7000 X3D: use cacheGames array to decide vcache vs non-cache die
+    else if (CPUBrandString.find("7950X3D") != string::npos || CPUBrandString.find("7945HX3D") != string::npos)
     {
         for (string cacheGame : cacheGames) {
             // todo: check if compare needs to be lowercased
@@ -259,11 +275,11 @@ DWORD_PTR getGameProcessAffinityMask(string game)
             }
         }
 
-        cout << "found! apply ccd0mask" << endl;
+        cout << "found! apply ccd1mask" << endl;
         gameMaskCache[game] = ccd1mask;
         return ccd1mask;
     }
-    else if (CPUBrandString.find("7900X3D") != string::npos || CPUBrandString.find("9900X3D") != string::npos)
+    else if (CPUBrandString.find("7900X3D") != string::npos)
     {
         for (string cacheGame : cacheGames) {
             // todo: check if compare needs to be lowercased
@@ -275,7 +291,7 @@ DWORD_PTR getGameProcessAffinityMask(string game)
             }
         }
 
-        cout << "found! apply ccd0mask12c" << endl;
+        cout << "found! apply ccd1mask12c" << endl;
         gameMaskCache[game] = ccd1mask12c;
         return ccd1mask12c;
     }
