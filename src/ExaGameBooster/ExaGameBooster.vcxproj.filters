@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Config.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
     <ClCompile Include="ExaGameBooster.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -23,6 +26,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Config.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="ExaGameBooster.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
