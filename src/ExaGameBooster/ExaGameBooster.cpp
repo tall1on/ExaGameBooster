@@ -514,7 +514,7 @@ int main()
 
                         DWORD_PTR mask = getGameProcessAffinityMask(wchar2string(entry.szExeFile));
 
-                        HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, entry.th32ProcessID);
+                        HANDLE hProcess = OpenProcess(PROCESS_SET_INFORMATION | PROCESS_QUERY_INFORMATION, FALSE, entry.th32ProcessID);
 
                         DWORD_PTR oldPriorityClass = GetPriorityClass(hProcess);
 
@@ -559,7 +559,7 @@ int main()
 
                         if (0 != mask)
                         {
-                            HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, entry.th32ProcessID);
+                            HANDLE hProcess = OpenProcess(PROCESS_SET_INFORMATION | PROCESS_QUERY_INFORMATION, FALSE, entry.th32ProcessID);
 
                             BOOL success = SetProcessAffinityMask(hProcess, mask);
 

@@ -1,5 +1,5 @@
 > [!NOTE]
-> All previously reported issues have been resolved. **v3.1 is now available!** Check out the [release page](https://github.com/tall1on/ExaGameBooster/releases/tag/v3.1.0) for the latest version.
+> **v3.1 is now available!** Check out the [release page](https://github.com/tall1on/ExaGameBooster/releases/tag/v3.1.0) for the latest version. If you encounter a `Trojan:Win32/Wacatac.B!ml` false positive from Microsoft Defender, this is a known heuristic detection — you can safely add an exclusion in Windows Security. A fix reducing this false positive is included in the latest build.
 
 <p align="center">
   <a href="#">
