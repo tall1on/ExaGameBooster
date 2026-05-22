@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "ExaGameBooster"
-#define MyAppVersion "3.0.2.0"
-#define MyAppPublisher "Exatek Deutschland"
+#define MyAppVersion "3.1.0.0"
+#define MyAppPublisher "Exatek"
 #define MyAppURL "https://www.exatek.de/"
 #define MyAppExeName "ExaGameBooster.exe"
 
