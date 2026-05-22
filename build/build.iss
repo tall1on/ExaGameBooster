@@ -41,6 +41,7 @@ VersionInfoCompany={#MyAppPublisher}
 VersionInfoDescription={#MyAppName} Installer
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
+PrivilegesRequired=admin
 
 [Registry]
 ; System-wide autostart (all users) - requires admin elevation which the installer already requests

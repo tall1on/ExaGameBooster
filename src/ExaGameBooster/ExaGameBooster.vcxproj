@@ -83,8 +83,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
-      <UAC>true</UAC>
-      <UACExecutionLevel>requireAdministrator</UACExecutionLevel>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalManifestFiles>ExaGameBooster.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -103,8 +103,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
-      <UAC>true</UAC>
-      <UACExecutionLevel>requireAdministrator</UACExecutionLevel>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalManifestFiles>ExaGameBooster.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,8 +119,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
-      <UAC>true</UAC>
-      <UACExecutionLevel>requireAdministrator</UACExecutionLevel>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalManifestFiles>ExaGameBooster.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,8 +139,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Manifest>
-      <UAC>true</UAC>
-      <UACExecutionLevel>requireAdministrator</UACExecutionLevel>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalManifestFiles>ExaGameBooster.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,6 +161,9 @@
     <Image Include="..\..\assets\exa.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
