@@ -47,11 +47,52 @@ DWORD_PTR intel8p4ecoremask = 983040; // (8+4) 12700
 DWORD_PTR intel8p8ecoremask = 16711680; // (8+8) 12900 + 13700
 DWORD_PTR intel8p16ecoremask = 4294901760; // (8+16) 13900
 
+// Intel Arrow Lake (Core Ultra 200 series) - NO Hyper-Threading on P-cores or E-cores
+// P-cores come first in the logical processor numbering, then E-cores
+// Matches all variants: K, KF, F, T, non-suffix (e.g. 245K, 245KF, 245, 245T)
+// 225: 6P+4E = 10 threads
+DWORD_PTR intelAL6pcoremask = 63;      // P-cores: logical 0-5  (bits 0-5)
+DWORD_PTR intelAL6p4ecoremask = 960;   // E-cores: logical 6-9  (bits 6-9)   - 225
+// 235 / 245: 6P+8E = 14 threads
+DWORD_PTR intelAL6p8ecoremask = 16320; // E-cores: logical 6-13 (bits 6-13)
+// 250: 6P+12E = 18 threads
+DWORD_PTR intelAL6p12ecoremask = 262080; // E-cores: logical 6-17 (bits 6-17)
+// 265: 8P+12E = 20 threads
+DWORD_PTR intelAL8pcoremask = 255;       // P-cores: logical 0-7  (bits 0-7)
+DWORD_PTR intelAL8p12ecoremask = 1048320; // E-cores: logical 8-19 (bits 8-19)
+// 270 / 285: 8P+16E = 24 threads
+DWORD_PTR intelAL8p16ecoremask = 16776960; // E-cores: logical 8-23 (bits 8-23)
+
 bool vcacheInUse = false;
 string cpuBrandStringCache = "";
+DWORD_PTR systemAffinityMaskCache = 0;
 
 map <string, DWORD_PTR> gameMaskCache;
 map <string, DWORD_PTR> serviceMaskCache;
+
+// Returns a mask covering all logical processors the OS exposes, minus core 0 (logical processor 0).
+// Core 0 is heavily used by Windows for DPC/interrupt handling.
+// Core 1 (SMT sibling of core 0) is NOT specifically reserved by Windows and is kept for the game.
+DWORD_PTR getDefaultGameAffinityMask()
+{
+    if (0 == systemAffinityMaskCache)
+    {
+        DWORD_PTR dwProcessAffinity, dwSystemAffinity;
+        GetProcessAffinityMask(GetCurrentProcess(), &dwProcessAffinity, &dwSystemAffinity);
+        systemAffinityMaskCache = dwSystemAffinity;
+    }
+
+    // Exclude logical processor 0 (bit 0) - reserved for Windows DPC/interrupt handling
+    DWORD_PTR mask = systemAffinityMaskCache & ~(DWORD_PTR)1;
+
+    // Safety: if somehow all bits were cleared (single-core system), fall back to all cores
+    if (0 == mask)
+    {
+        mask = systemAffinityMaskCache;
+    }
+
+    return mask;
+}
 
 string getCpuBrandString()
 {
@@ -138,6 +179,44 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         gameMaskCache[game] = intel6pcoremask;
         return intel6pcoremask;
     }
+    // Intel Arrow Lake (Core Ultra 200 series) - no Hyper-Threading, P-cores only for games
+    // Must be checked before the generic "Intel" fallback
+    // Matches all variants: K, KF, F, T, non-suffix (e.g. 285K, 285KF, 285T, 285)
+    else if (CPUBrandString.find("285") != string::npos || CPUBrandString.find("270") != string::npos)
+    {
+        // 8P+16E: P-cores = logical 0-7
+        cout << "found! apply intelAL8pcoremask (285/270)" << endl;
+        gameMaskCache[game] = intelAL8pcoremask;
+        return intelAL8pcoremask;
+    }
+    else if (CPUBrandString.find("265") != string::npos)
+    {
+        // 8P+12E: P-cores = logical 0-7
+        cout << "found! apply intelAL8pcoremask (265)" << endl;
+        gameMaskCache[game] = intelAL8pcoremask;
+        return intelAL8pcoremask;
+    }
+    else if (CPUBrandString.find("250") != string::npos)
+    {
+        // 6P+12E: P-cores = logical 0-5
+        cout << "found! apply intelAL6pcoremask (250)" << endl;
+        gameMaskCache[game] = intelAL6pcoremask;
+        return intelAL6pcoremask;
+    }
+    else if (CPUBrandString.find("245") != string::npos || CPUBrandString.find("235") != string::npos)
+    {
+        // 6P+8E: P-cores = logical 0-5
+        cout << "found! apply intelAL6pcoremask (245/235)" << endl;
+        gameMaskCache[game] = intelAL6pcoremask;
+        return intelAL6pcoremask;
+    }
+    else if (CPUBrandString.find("225") != string::npos)
+    {
+        // 6P+4E: P-cores = logical 0-5
+        cout << "found! apply intelAL6pcoremask (225)" << endl;
+        gameMaskCache[game] = intelAL6pcoremask;
+        return intelAL6pcoremask;
+    }
     else if (CPUBrandString.find("Intel") != string::npos)
     {
         // trust the scheduler :P
@@ -200,9 +279,12 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         return ccd0mask12c;
     }
 
-    // dont handle other AMD SKUs (no latency penalty issues)
-    gameMaskCache[game] = 0;
-    return 0;
+    // Unknown/unsupported CPU: use all cores except core 0 (Windows DPC/interrupt core)
+    // Core 1 (SMT sibling of core 0) is kept since Windows does not specifically reserve it
+    DWORD_PTR defaultMask = getDefaultGameAffinityMask();
+    cout << "unknown CPU, apply default mask (all cores except core 0): " << defaultMask << endl;
+    gameMaskCache[game] = defaultMask;
+    return defaultMask;
 }
 
 DWORD_PTR getServiceProcessAffinityMask(string service)
@@ -277,6 +359,43 @@ DWORD_PTR getServiceProcessAffinityMask(string service)
         cout << "found! apply intel6p4ecoremask" << endl;
         serviceMaskCache[service] = intel6p4ecoremask;
         return intel6p4ecoremask;
+    }
+    // Intel Arrow Lake (Core Ultra 200 series) - services go to E-cores
+    // Matches all variants: K, KF, F, T, non-suffix
+    else if (CPUBrandString.find("285") != string::npos || CPUBrandString.find("270") != string::npos)
+    {
+        // 8P+16E: E-cores = logical 8-23
+        cout << "found! apply intelAL8p16ecoremask (285/270)" << endl;
+        serviceMaskCache[service] = intelAL8p16ecoremask;
+        return intelAL8p16ecoremask;
+    }
+    else if (CPUBrandString.find("265") != string::npos)
+    {
+        // 8P+12E: E-cores = logical 8-19
+        cout << "found! apply intelAL8p12ecoremask (265)" << endl;
+        serviceMaskCache[service] = intelAL8p12ecoremask;
+        return intelAL8p12ecoremask;
+    }
+    else if (CPUBrandString.find("250") != string::npos)
+    {
+        // 6P+12E: E-cores = logical 6-17
+        cout << "found! apply intelAL6p12ecoremask (250)" << endl;
+        serviceMaskCache[service] = intelAL6p12ecoremask;
+        return intelAL6p12ecoremask;
+    }
+    else if (CPUBrandString.find("245") != string::npos || CPUBrandString.find("235") != string::npos)
+    {
+        // 6P+8E: E-cores = logical 6-13
+        cout << "found! apply intelAL6p8ecoremask (245/235)" << endl;
+        serviceMaskCache[service] = intelAL6p8ecoremask;
+        return intelAL6p8ecoremask;
+    }
+    else if (CPUBrandString.find("225") != string::npos)
+    {
+        // 6P+4E: E-cores = logical 6-9
+        cout << "found! apply intelAL6p4ecoremask (225)" << endl;
+        serviceMaskCache[service] = intelAL6p4ecoremask;
+        return intelAL6p4ecoremask;
     }
     else if (CPUBrandString.find("Intel") != string::npos)
     {
