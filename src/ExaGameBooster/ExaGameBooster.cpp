@@ -240,12 +240,6 @@ DWORD_PTR getGameProcessAffinityMask(string game)
         gameMaskCache[game] = intelAL6pcoremask;
         return intelAL6pcoremask;
     }
-    else if (CPUBrandString.find("Intel") != string::npos)
-    {
-        // trust the scheduler :P
-        gameMaskCache[game] = 0;
-        return 0;
-    }
 
     // Ryzen 9000 X3D: always run games on X3D (vcache) cores, no cacheGames check
     if (CPUBrandString.find("9950X3D2") != string::npos || CPUBrandString.find("9950X3D") != string::npos)
