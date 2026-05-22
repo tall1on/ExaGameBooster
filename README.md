@@ -1,3 +1,6 @@
+> [!CAUTION]
+> I have paused the development of the program for some time now. The main reason is that the nature of the program can very easily trigger false positives. Since it is a non-profit project, I do not want to acquire a code signing certificate. The project was primarily created for myself anyway and it is possible to set an exclude in Defender or use a good antivirus like Kaspersky without any problems. The development will probably continue if it is clear whether the Zen 6 24-core models will continue to benefit from Affinity, unfortunately I currently also have a 9800X3D and can no longer test it anyway. Feel free to submit pull requests if you are interested in the project and can help with the false-postivies. Otherwise, please remember the license if you fork and make changes.
+
 <p align="center">
   <a href="#">
     <img alt="Exatek" src="https://cdn.exatek.de/exatek/exa-partner.png" width="300" />
@@ -6,10 +9,8 @@
 
 # ExaGameBooster™
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![Github All Releases](https://img.shields.io/github/downloads/Exatek-Germany/ExaGameBooster/total.svg)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/static/v1?label=Games&message=7871&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/static/v1?label=platform&message=win-64&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/static/v1?label=dependencies&message=0&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=platform&message=Windows%2011%2064-Bit&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
 [![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPN)
 
 
@@ -27,6 +28,10 @@ This software is provided "as is" without warranty of any kind, either express o
 - v3.1: Support for Intel 14th Gen (Raptor Lake Refresh) desktop CPUs
 - v3.1: Support for Intel Arrow Lake (Core Ultra 200 series) desktop CPUs
 - Continuous: Support for more games (including V-Cache optimizations)
+
+### Survey on support for the 14th generation of Intel and future Intel products
+
+Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBPgJ
 
 ### How to install
 
