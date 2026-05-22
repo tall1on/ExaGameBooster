@@ -20,16 +20,13 @@ P+E cores.
 
 This software is provided "as is" without warranty of any kind, either express or implied. Use at your own risk.
 
-### Roadmap (as of 2024-03-25)
+### Roadmap (as of 2026-05-22)
 
-- v3.1: We are currently working on fixing false positive antivirus detections. New Features are delayed until the issue is fixed
-- v3.1: Support for new 12/16 cores AMD Zen 5 products (In Master, will release with Antivirus fixes)
-- Support for 14th Gen Intel products (Planned)
+- v3.1: Reduced false positive antivirus detections (improved installer, non-solid compression, version info)
+- v3.1: Support for new 12/16 core AMD Zen 5 products (9900X, 9900X3D, 9950X, 9950X3D, 9950X3D2)
+- v3.1: Support for Intel 14th Gen (Raptor Lake Refresh) desktop CPUs
+- v3.1: Support for Intel Arrow Lake (Core Ultra 200 series) desktop CPUs
 - Continuous: Support for more games (including V-Cache optimizations)
-
-### Survey on support for the 14th generation of Intel and future Intel products
-
-Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBPgJ
 
 ### How to install
 
@@ -39,6 +36,14 @@ Simply download and run the Installer.exe executable (administrator privileges r
 
 > **_NOTE:_**  If your CPU is not in the list, you probably do not need this program. This program solves scheduler
 > problems caused by multi-die CPUs.
+
+#### AMD Ryzen Granite Ridge (9000 Series) — supported from v3.1+
+
+| Version | Ryzen 9 9950X3D2* | Ryzen 9 9950X3D* | Ryzen 9 9950X | Ryzen 9 9900X3D* | Ryzen 9 9900X |
+|---------|:-----------------:|:----------------:|:-------------:|:----------------:|:-------------:|
+| 3.1.0   |         ✅         |        ✅         |       ✅       |        ✅         |       ✅       |
+
+\* we recommend uninstalling the "AMD 3D V-Cache Performance Optimizer Driver" or enabling the "high performance" power plan to avoid scheduling problems
 
 #### AMD Ryzen Raphael (7000 Series)
 
@@ -76,6 +81,24 @@ Simply download and run the Installer.exe executable (administrator privileges r
 | 2.0.0   |       ✅       |       ✅       |      ✅       |
 | 1.1.0   |       ✅       |       ✅       |      ❌       |
 | 1.0.0   |       ✅       |       ❌       |      ❌       |
+
+#### Intel Arrow Lake (Core Ultra 200 Series) — supported from v3.1+
+
+No Hyper-Threading on any cores. P-cores are used for games, E-cores for services.
+
+| Version | Core Ultra 9 285K | Core Ultra 7 265K | Core Ultra 5 245K/245 | Core Ultra 5 235 | Core Ultra 5 225 |
+|---------|:-----------------:|:-----------------:|:---------------------:|:----------------:|:----------------:|
+| 3.1.0   |         ✅         |         ✅         |           ✅           |        ✅         |        ✅         |
+
+Also supports all non-K, F, T variants (e.g. 285KF, 270K, 250K, 250KF, etc.).
+
+#### Intel Raptor Lake Refresh (14th Gen) — supported from v3.1+
+
+| Version | i9 14900 | i7 14700 | i5 14600 | i5 14500 | i5 14400 | i3 14100 |
+|---------|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+| 3.1.0   |    ✅     |    ✅     |    ✅     |    ✅     |    ✅     |    ✅     |
+
+Games are pinned to P-cores (with Hyper-Threading). Services are pinned to E-cores (no HT). The i3 14100 has no E-cores; services use the default scheduler.
 
 #### Intel Raptor Lake (13th Gen)
 
