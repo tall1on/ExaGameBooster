@@ -48,8 +48,11 @@ PrivilegesRequired=admin
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "{#MyAppName}"; ValueData: """{app}\{#MyAppExeName}"""; Flags: uninsdeletevalue
 
 [Run]
-; Launch the application after install for the current user session
-Filename: "{app}\{#MyAppExeName}"; Description: "Launch {#MyAppName}"; Flags: nowait postinstall skipifsilent
+; Launch the application after install for the current user session.
+; shellexec is required because ExaGameBooster.exe has requireAdministrator
+; in its manifest; CreateProcess (Inno Setup's default) cannot launch an
+; elevation-required child reliably, but ShellExecuteEx honors the manifest.
+Filename: "{app}\{#MyAppExeName}"; Description: "Launch {#MyAppName}"; Flags: nowait postinstall skipifsilent shellexec
 
 [UninstallRun]
 ; Terminate the process directly via taskkill.exe (no cmd shell wrapper - avoids shell injection heuristics)
