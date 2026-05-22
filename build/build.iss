@@ -10,10 +10,10 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId=ExaGameBooster
+AppId={{A3F2C1D4-8B5E-4F7A-9C2D-1E6B3A4F5D8C}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-AppVerName={#MyAppName}
+AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -22,28 +22,42 @@ DefaultDirName={commonpf64}\Exatek\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
+; Output directory is set by the build script via /O flag; default to dist/ relative to repo root
+OutputDir=..\dist
 OutputBaseFilename=Installer
-Compression=lzma
-SolidCompression=yes
+; Use non-solid compression to reduce packer heuristic triggers
+Compression=lzma2/ultra
+SolidCompression=no
 WizardStyle=modern
-CloseApplications=force
-CloseApplicationsFilter=ExaGameBooster.exe
+; Prompt user to close the running app; user can cancel the installation from this dialog
+CloseApplications=yes
+CloseApplicationsFilter={#MyAppExeName}
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 UninstallDisplayIcon={app}\{#MyAppExeName}
+; Provide version info so AV can verify the installer binary
+VersionInfoVersion={#MyAppVersion}
+VersionInfoCompany={#MyAppPublisher}
+VersionInfoDescription={#MyAppName} Installer
+VersionInfoProductName={#MyAppName}
+VersionInfoProductVersion={#MyAppVersion}
 
 [Registry]
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "ExaGameBooster"; ValueData: """{app}\{#MyAppExeName}"""; Flags: uninsdeletevalue
+; System-wide autostart (all users) - requires admin elevation which the installer already requests
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "{#MyAppName}"; ValueData: """{app}\{#MyAppExeName}"""; Flags: uninsdeletevalue
 
 [Run]
-Filename: {app}\{#MyAppExeName}; Description: Run Application; Flags: nowait
+; Launch the application after install for the current user session
+Filename: "{app}\{#MyAppExeName}"; Description: "Launch {#MyAppName}"; Flags: nowait postinstall skipifsilent
 
 [UninstallRun]
-Filename: "{cmd}"; Parameters: "/C ""taskkill /im ExaGameBooster.exe /f /t"
+; Terminate the process directly via taskkill.exe (no cmd shell wrapper - avoids shell injection heuristics)
+Filename: "taskkill.exe"; Parameters: "/im ""{#MyAppExeName}"" /f"; Flags: skipifdoesntexist runhidden waituntilterminated
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "D:\PhpstormProjects\CPUAffinityGameBooster\build\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+; Path is relative to the location of this .iss file (build/) - exe is placed in dist/ by build.bat
+Source: "..\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
