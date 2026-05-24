@@ -29,10 +29,6 @@ This software is provided "as is" without warranty of any kind, either express o
 - v3.1: Support for Intel Arrow Lake (Core Ultra 200 series) desktop CPUs
 - Continuous: Support for more games (including V-Cache optimizations)
 
-### Survey on support for the 14th generation of Intel and future Intel products
-
-Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBPgJ
-
 ### How to install
 
 Simply download and run the Installer.exe executable (administrator privileges required). This will install the service and set up the autostart. You can also just run ExaGameBooster.exe to test without installation/autostart.
