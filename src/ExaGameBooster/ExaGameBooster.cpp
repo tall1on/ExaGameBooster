@@ -17,8 +17,6 @@
 #include "Config.h"
 #include <thread>
 
-#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
-
 using namespace std;
 
 // AMD Ryzen (5950X, 7950X, 7950X3D P-Die, 9950X, 9950X3D P-Die, 9950X3D2 P-Die)
@@ -477,7 +475,7 @@ DWORD_PTR getServiceProcessAffinityMask(string service)
     return 0;
 }
 
-int main()
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     std::thread myThread(CheckUpdate);
 
