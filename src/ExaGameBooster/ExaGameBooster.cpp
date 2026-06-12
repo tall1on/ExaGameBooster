@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <Windows.h>
+#include <shellapi.h>
 #include <tlhelp32.h>
 #include <cstdio>
 #include <tchar.h>
@@ -18,6 +19,8 @@
 #include <thread>
 
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+#pragma comment(lib, "shell32.lib")
+#pragma comment(lib, "advapi32.lib")
 
 using namespace std;
 
@@ -477,8 +480,48 @@ DWORD_PTR getServiceProcessAffinityMask(string service)
     return 0;
 }
 
+static bool IsRunningElevated()
+{
+    BOOL isAdmin = FALSE;
+    PSID administratorsGroup = NULL;
+    SID_IDENTIFIER_AUTHORITY ntAuthority = SECURITY_NT_AUTHORITY;
+
+    if (AllocateAndInitializeSid(&ntAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID,
+        DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &administratorsGroup))
+    {
+        if (!CheckTokenMembership(NULL, administratorsGroup, &isAdmin))
+            isAdmin = FALSE;
+        FreeSid(administratorsGroup);
+    }
+
+    return isAdmin != FALSE;
+}
+
+static bool RelaunchElevated()
+{
+    WCHAR szPath[MAX_PATH];
+    if (GetModuleFileNameW(NULL, szPath, MAX_PATH) == 0)
+        return false;
+
+    SHELLEXECUTEINFOW sei = { 0 };
+    sei.cbSize = sizeof(sei);
+    sei.lpVerb = L"runas";
+    sei.lpFile = szPath;
+    sei.lpParameters = GetCommandLineW();
+    sei.nShow = SW_SHOWNORMAL;
+
+    return ShellExecuteExW(&sei) != FALSE;
+}
+
 int main()
 {
+    if (!IsRunningElevated())
+    {
+        if (RelaunchElevated())
+            return 0;
+        return 1;
+    }
+
     std::thread myThread(CheckUpdate);
 
     //freopen("output.log", "w", stdout);
