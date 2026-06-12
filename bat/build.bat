@@ -3,9 +3,29 @@ setlocal enabledelayedexpansion
 
 :: ============================================================
 :: build.bat
-:: Builds ExaGameBooster.exe (Release|x64) using MSBuild and
-:: copies the output to the 'build' folder so the Inno Setup
-:: installer script can pick it up.
+:: Builds ExaGameBooster.exe (Release|x64) using MSBuild,
+:: copies the output to the 'build' folder, and optionally
+:: Authenticode-signs the binary to prevent AV false positives.
+::
+:: Code Signing (optional but strongly recommended):
+::   Set one of the following environment variables before running:
+::
+::   SIGN_PFX      = full path to your .pfx certificate file
+::   SIGN_PFX_PASS = password for the .pfx file (if needed)
+::   SIGN_SUBJECT  = subject name of a cert already in the local
+::                   Windows certificate store (My store)
+::
+::   Example (PFX):
+::     set SIGN_PFX=C:\certs\MyCodeSign.pfx
+::     set SIGN_PFX_PASS=mysecretpassword
+::     bat\build.bat
+::
+::   Example (store):
+::     set SIGN_SUBJECT=My Company Name
+::     bat\build.bat
+::
+::   Without a certificate the build still succeeds but the exe
+::   will be unsigned and may trigger AV heuristics on first run.
 :: ============================================================
 
 set "REPO_ROOT=%~dp0.."
@@ -102,5 +122,73 @@ if %errorlevel% neq 0 (
 )
 
 echo Build complete: %DIST_DIR%\ExaGameBooster.exe
+
+:: ---- Authenticode Signing (optional) ----
+:: Locate signtool.exe from Windows SDK
+set "SIGNTOOL="
+set "WINSDK_BASE=%ProgramFiles(x86)%\Windows Kits\10\bin"
+if not exist "%WINSDK_BASE%" set "WINSDK_BASE=%ProgramFiles%\Windows Kits\10\bin"
+
+:: Search for signtool in known SDK versions (newest first via dir /b /ad /o-n)
+if exist "%WINSDK_BASE%" (
+    for /f "delims=" %%v in ('dir /b /ad /o-n "%WINSDK_BASE%" 2^>nul') do (
+        if exist "%WINSDK_BASE%\%%v\x64\signtool.exe" (
+            set "SIGNTOOL=%WINSDK_BASE%\%%v\x64\signtool.exe"
+            goto :signtool_found
+        )
+    )
+)
+
+:: Fall back to PATH
+where signtool.exe >nul 2>&1
+if %errorlevel% equ 0 (
+    set "SIGNTOOL=signtool.exe"
+    goto :signtool_found
+)
+
+echo NOTE: signtool.exe not found. Skipping code signing.
+echo       Install the Windows SDK or add signtool.exe to PATH.
+goto :sign_done
+
+:signtool_found
+echo Using signtool: %SIGNTOOL%
+
+:: Sign using a PFX file if SIGN_PFX is set
+if defined SIGN_PFX (
+    if not exist "%SIGN_PFX%" (
+        echo WARNING: SIGN_PFX is set but file not found: %SIGN_PFX%
+        goto :sign_done
+    )
+    echo Signing with PFX: %SIGN_PFX%
+    if defined SIGN_PFX_PASS (
+        "%SIGNTOOL%" sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /f "%SIGN_PFX%" /p "%SIGN_PFX_PASS%" /d "ExaGameBooster" "%DIST_DIR%\ExaGameBooster.exe"
+    ) else (
+        "%SIGNTOOL%" sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /f "%SIGN_PFX%" /d "ExaGameBooster" "%DIST_DIR%\ExaGameBooster.exe"
+    )
+    if %errorlevel% neq 0 (
+        echo WARNING: Code signing failed. Unsigned exe is still in %DIST_DIR%.
+        goto :sign_done
+    )
+    echo Signing successful.
+    goto :sign_done
+)
+
+:: Sign using a certificate from the Windows certificate store if SIGN_SUBJECT is set
+if defined SIGN_SUBJECT (
+    echo Signing with store certificate subject: %SIGN_SUBJECT%
+    "%SIGNTOOL%" sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /n "%SIGN_SUBJECT%" /d "ExaGameBooster" "%DIST_DIR%\ExaGameBooster.exe"
+    if %errorlevel% neq 0 (
+        echo WARNING: Code signing failed. Unsigned exe is still in %DIST_DIR%.
+        goto :sign_done
+    )
+    echo Signing successful.
+    goto :sign_done
+)
+
+echo NOTE: No signing certificate configured.
+echo       Set SIGN_PFX (path to .pfx) or SIGN_SUBJECT (cert store subject name)
+echo       to enable Authenticode signing and eliminate AV false positives.
+
+:sign_done
 
 endlocal
