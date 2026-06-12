@@ -8,9 +8,9 @@
 </p>
 
 # ExaGameBooster™
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Exatek-Germany/ExaGameBooster)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/static/v1?label=Games&message=9645&color=success)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
-[![](https://img.shields.io/static/v1?label=platform&message=Windows%2011%2064-Bit&color=lightgrey)](https://github.com/Exatek-Germany/ExaGameBooster/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/tall1on/ExaGameBooster)](https://github.com/tall1on/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=Games&message=9645&color=success)](https://github.com/tall1on/ExaGameBooster/releases)
+[![](https://img.shields.io/static/v1?label=platform&message=Windows%2011%2064-Bit&color=lightgrey)](https://github.com/tall1on/ExaGameBooster/releases)
 [![](https://img.shields.io/discord/1082631532419743804)](https://discord.gg/PsR7cbWaPN)
 
 
@@ -28,10 +28,6 @@ This software is provided "as is" without warranty of any kind, either express o
 - v3.1: Support for Intel 14th Gen (Raptor Lake Refresh) desktop CPUs
 - v3.1: Support for Intel Arrow Lake (Core Ultra 200 series) desktop CPUs
 - Continuous: Support for more games (including V-Cache optimizations)
-
-### Survey on support for the 14th generation of Intel and future Intel products
-
-Please vote if you would like us to add support: https://strawpoll.com/poy9W3aBPgJ
 
 ### How to install
 
