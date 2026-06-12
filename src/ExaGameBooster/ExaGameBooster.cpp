@@ -503,12 +503,14 @@ static bool RelaunchElevated()
     if (GetModuleFileNameW(NULL, szPath, MAX_PATH) == 0)
         return false;
 
-    SHELLEXECUTEINFOW sei = { 0 };
+    SHELLEXECUTEINFOW sei = {};
     sei.cbSize = sizeof(sei);
+    sei.fMask = SEE_MASK_NOASYNC | SEE_MASK_NO_CONSOLE;
     sei.lpVerb = L"runas";
     sei.lpFile = szPath;
-    sei.lpParameters = GetCommandLineW();
-    sei.nShow = SW_SHOWNORMAL;
+    sei.lpParameters = NULL;
+    sei.lpDirectory = NULL;
+    sei.nShow = SW_HIDE;
 
     return ShellExecuteExW(&sei) != FALSE;
 }
